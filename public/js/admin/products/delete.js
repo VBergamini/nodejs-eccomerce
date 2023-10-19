@@ -1,0 +1,59 @@
+document.addEventListener('DOMContentLoaded', function() {
+
+    var buttons = document.querySelectorAll('.btnDelete');
+
+    for (let i = 0; i<buttons.length; i++) {
+
+        buttons[i].addEventListener('click', deleteProduct);
+
+    }
+    
+});
+
+function deleteProduct() {
+
+    var id = this.dataset.id;
+
+    if (confirm('Are you sure?')) {
+        
+        if (id != '') {
+
+            let data = { id: id };
+
+            fetch('/products/delete', {
+
+                method: "DELETE",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+
+            })
+            .then(r=> {
+
+                return r.json();
+
+            })
+            .then(r => {
+
+                if (r.ok) {
+
+                    window.location.reload();
+
+                }
+                else {
+
+                    alert('Error on delete product');
+
+                }
+
+            })
+            .catch(e => {
+
+                console.log(e);
+
+            });
+
+        }
+        
+    }
+
+}

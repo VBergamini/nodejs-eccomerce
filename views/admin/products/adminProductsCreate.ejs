@@ -1,0 +1,55 @@
+
+<script src="/js/admin/products/create.js"></script>
+<div>
+    <h1>Create product</h1>
+</div>
+
+<div>
+    <form>
+        <div class="form-group">
+          <label for="inputCode">Code</label>
+          <input type="text" class="form-control" id="inputCode" />
+        </div>
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" />
+          </div>
+        <div class="form-group">
+            <label for="inputQtty">Quantity</label>
+            <input type="number" class="form-control" id="inputQtty" />
+        </div>
+        <div class="form-group">
+          <label for="inputPrice">Price</label>
+          <input class="form-control" type="number" id = "inputPrice" />
+        </div>
+        <div class="form-group">
+          <label for="selBrand">Brand</label>
+          <select class="form-control" id="selBrand">
+            <option value="0">--Select--</option>
+            <% brandList.map(function(value, index) { %>
+                <option value="<%=value.brandId%>"><%= value.brandName %></option>
+            <% }) %>              
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="selCategory">Category</label>
+          <select class="form-control" id="selCategory">
+            <option value="0">--Select</option>
+            <% categoryList.map(function(value, index) { %>
+                <option value="<%=value.categoryId%>"><%= value.categoryName %></option>
+            <% }) %>  
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputImage">Image</label>
+          <input class="form-control" type="file" id="inputImage" />
+        </div>
+        <div style="padding:10px;">
+          <img alt="Product Image" style="display:none;" width="200" id="imagePreview">
+        </div>
+        <div>
+            <button class="btn btn-primary" type="button" id="btnCreate">Create</button>
+            <a href="/products" class="btn btn-default">Back</a>
+        </div>
+      </form>
+</div>

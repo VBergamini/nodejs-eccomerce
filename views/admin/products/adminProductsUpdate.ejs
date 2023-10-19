@@ -1,0 +1,64 @@
+
+<script src="/js/admin/products/update.js"></script>
+<div>
+    <h1>Product Update</h1>
+</div>
+
+<div>
+    <form>
+        <div class="form-group">
+          <input type="hidden" id="inputId" value="<%= product.productId %>">
+          <label for="inputCode">Code</label>
+          <input type="text" value="<%= product.productCode %>" class="form-control" id="inputCode">
+        </div>
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" value="<%= product.productName %>" class="form-control" id="inputName">
+          </div>
+        <div class="form-group">
+            <label for="inputQtty">Quantity</label>
+            <input type="number" value="<%= product.productQuantity %>" class="form-control" id="inputQtty">
+        </div>
+        <div class="form-group">
+          <label for="inputPrice">Price</label>
+          <input class="form-control" value="<%= product.productPrice %>" type="number" id = "inputPrice" />
+        </div>
+        <div class="form-group">
+          <label for="selBrand">Brand</label>
+          <select class="form-control" id="selBrand">
+            <option value="0">--Select--</option>
+            <% brandList.map(function(value, index) { %>
+                <% if (value.brandId == product.brandId) { %>
+                    <option selected value="<%=value.brandId%>"><%= value.brandName %></option>
+                <%} else { %>
+                    <option value="<%=value.brandId%>"><%= value.brandName %></option>
+                <%} %>                
+            <% }) %>                 
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="selCategory">Category</label>
+          <select class="form-control" id="selCategory">
+            <option value="0">--Select</option>
+            <% categoryList.map(function(value, index) { %>
+                <% if (value.categoryId == product.categoryId) { %>
+                    <option selected value="<%=value.categoryId%>"><%= value.categoryName %></option>
+                <%} else { %>
+                    <option value="<%=value.categoryId%>"><%= value.categoryName %></option>
+                <%} %>                
+            <% }) %>    
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputImage">Image</label>
+          <input class="form-control" type="file" id="inputImage"/>
+        </div>
+        <div style="padding:10px;">
+          <img alt="<%= product.productName %>" src="<%= product.productImage %>" width="200" id="imagePreview">
+        </div>
+        <div>
+            <button class="btn btn-primary" type="button" id="btnUpdate">Update</button>
+            <a href="/products" class="btn btn-default">Back</a>
+        </div>
+      </form>
+</div>
