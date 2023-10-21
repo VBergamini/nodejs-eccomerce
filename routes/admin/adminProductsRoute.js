@@ -1,7 +1,6 @@
 const express = require('express');
 const multer = require('multer');
 const AdminProductsController = require('../../controllers/admin/adminProductsController');
-const Authentication = require('../../middlewares/authentication');
 
 class AdminProductsRoute {
 
@@ -12,7 +11,6 @@ class AdminProductsRoute {
     constructor() {
 
         this.#router = express.Router();
-        var authentication = new Authentication();
         
         var storage = multer.diskStorage(
             {
@@ -31,18 +29,18 @@ class AdminProductsRoute {
         var ctrl = new AdminProductsController;
 
         // get
-        this.#router.get('/', authentication.verifyLogedUser, ctrl.productsView);
-        this.#router.get('/create', authentication.verifyLogedUser, ctrl.createProductView);
-        this.#router.get("/update/:id", authentication.verifyLogedUser, ctrl.updateProductView);
+        this.#router.get('/', ctrl.productsView);
+        this.#router.get('/create', ctrl.createProductView);
+        this.#router.get("/update/:id", ctrl.updateProductView);
         
         // post
-        this.#router.post("/create", authentication.verifyLogedUser, upload.single('inputImage'), ctrl.createProduct);
+        this.#router.post("/create", upload.single('inputImage'), ctrl.createProduct);
 
         // put
-        this.#router.put("/update", authentication.verifyLogedUser, upload.single('inputImage'), ctrl.updateProduct);
+        this.#router.put("/update", upload.single('inputImage'), ctrl.updateProduct);
 
         // delete
-        this.#router.delete("/delete", authentication.verifyLogedUser, ctrl.deleteProduct);
+        this.#router.delete("/delete", ctrl.deleteProduct);
 
     }
     

@@ -1,10 +1,14 @@
 const BrandsModel = require("../../models/brandsModel");
 const CategoriesModel = require("../../models/categoriesModel");
+const UsersModel = require("../../models/usersModel");
 
 class StoreBrandsController {
 
     // get
     async brandsView(req, res) {
+
+        var logedUser = new UsersModel();
+        logedUser = await logedUser.getUser(req.cookies.logedUser);
 
         var category = new CategoriesModel();
         var categoryList = await category.listCategories();
@@ -12,12 +16,15 @@ class StoreBrandsController {
         var brand = new BrandsModel();
         var brandList = await brand.listBrands();
 
-        res.render('store/home/storeHome', {layout: 'store/layout/storeLayout', categoryList: categoryList, brandList: brandList, url: 'brands', paramId: req.params.id});
+        res.render('store/home/storeHome', {layout: 'store/layout/storeLayout', categoryList: categoryList, brandList: brandList, url: 'brands', paramId: req.params.id, logedUser: logedUser});
 
     }
 
     // get
     async brandsFilterView(req, res) {
+
+        var logedUser = new UsersModel();
+        logedUser = await logedUser.getUser(req.cookies.logedUser);
 
         var category = new CategoriesModel();
         var categoryList = await category.listCategories();
@@ -27,7 +34,7 @@ class StoreBrandsController {
 
         var productList = await brand.filterBrand(req.params.id);
 
-        res.render('store/home/storeHome', {layout: 'store/layout/storeLayout', categoryList: categoryList, brandList: brandList, productList: productList, url: 'brands'+req.params.id, paramId: req.params.id });
+        res.render('store/home/storeHome', {layout: 'store/layout/storeLayout', categoryList: categoryList, brandList: brandList, productList: productList, url: 'brands'+req.params.id, paramId: req.params.id, logedUser: logedUser});
 
     }
 

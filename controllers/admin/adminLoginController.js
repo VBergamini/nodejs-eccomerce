@@ -1,6 +1,5 @@
 const UsersModel = require("../../models/usersModel");
 
-
 class AdminLoginController {
 
     // get
@@ -14,7 +13,7 @@ class AdminLoginController {
     logoutView(req, res) {
 
         res.clearCookie('logedUser');
-        res.redirect('/login');
+        res.redirect('/store');
 
     }
 
@@ -43,6 +42,7 @@ class AdminLoginController {
             res.send({status: false, msg: 'Invalid Credentials'});
 
         }
+        
     }
 
 }

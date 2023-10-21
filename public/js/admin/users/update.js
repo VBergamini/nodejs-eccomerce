@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("btnUpdate").addEventListener('click', updateUser);
 
-
     function updateUser() {
 
         var id = document.getElementById("userId");
@@ -29,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user)
+                
             })
             .then(r => {
 

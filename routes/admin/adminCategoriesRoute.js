@@ -1,6 +1,5 @@
 const express = require('express');
 const AdminCategoriesController = require('../../controllers/admin/adminCategoriesController');
-const Autenthication = require('../../middlewares/authentication');
 const multer = require('multer');
 
 class adminCategoriesRoute {
@@ -12,7 +11,6 @@ class adminCategoriesRoute {
     constructor() {
 
         this.#router = express.Router();
-        let authentication = new Autenthication();
 
         var storage = multer.diskStorage(
             {
@@ -30,18 +28,18 @@ class adminCategoriesRoute {
         var ctrl = new AdminCategoriesController();
 
         // get
-        this.#router.get('/', authentication.verifyLogedUser, ctrl.categoriesView);
-        this.#router.get('/create', authentication.verifyLogedUser, ctrl.createCategoryView);
-        this.#router.get('/update/:id', authentication.verifyLogedUser, ctrl.updateCategoryView);
+        this.#router.get('/', ctrl.categoriesView);
+        this.#router.get('/create', ctrl.createCategoryView);
+        this.#router.get('/update/:id', ctrl.updateCategoryView);
 
         // post
-        this.#router.post('/create', authentication.verifyLogedUser, upload.single('inputImage'), ctrl.createCategory);
+        this.#router.post('/create', upload.single('inputImage'), ctrl.createCategory);
 
         // put
-        this.#router.put('/update', authentication.verifyLogedUser, upload.single('inputImage'), ctrl.updateCategory);
+        this.#router.put('/update', upload.single('inputImage'), ctrl.updateCategory);
 
         // delete
-        this.#router.delete('/delete', authentication.verifyLogedUser, ctrl.deleteCategory);
+        this.#router.delete('/delete', ctrl.deleteCategory);
     }
 }
 

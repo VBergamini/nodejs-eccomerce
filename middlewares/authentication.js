@@ -12,8 +12,9 @@ class Authentication {
                     res.locals.logedUser = user;
                     next();
                 }
-                else
+                else {
                     res.redirect('/login');
+                }
         }
         else{
             res.redirect("/login");

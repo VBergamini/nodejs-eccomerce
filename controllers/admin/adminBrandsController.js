@@ -88,6 +88,7 @@ class AdminBrandsController {
 
                     if(fileExist) {
 
+                        // delete the storaged image
                         fs.unlinkSync(global.PROJECT_ROOT + '/public/' + brandOld.brandImage);
 
                     }
@@ -127,6 +128,7 @@ class AdminBrandsController {
                 
                 if(fileExist) {
 
+                    // delete the storaged image
                     fs.unlinkSync(global.PROJECT_ROOT + '/public/' + brand.brandImage);
 
                 }

@@ -142,3 +142,7 @@
 .icon-pinterest-p:before {
   content: "\f231";
 }
+.icon-dashboard:before {
+  font-size: 1.6rem;
+  content: "\2699";
+}

@@ -1,5 +1,5 @@
-const CategoriesModel = require("../../models/categoriesModel");
 const fs = require('fs');
+const CategoriesModel = require("../../models/categoriesModel");
 
 class AdminCategoriesController {
 
@@ -88,6 +88,7 @@ class AdminCategoriesController {
                     
                     if(fileExist) {
     
+                        // delete the storaged image
                         fs.unlinkSync(global.PROJECT_ROOT + '/public/' + categoryOld.categoryImage);
     
                     }

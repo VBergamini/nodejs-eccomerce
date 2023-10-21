@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" type="text/css" href="/css/essentials/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/essentials/icomoon/icomoon.css">
-    <!-- <link href="/css/essentials/fontawesome/all.min.css" rel="stylesheet" type="text/css"> -->
     <link rel="stylesheet" type="text/css" href="/css/store/vendor.css">
     <link rel="stylesheet" type="text/css" href="/css/store/style.css">
   </head>
@@ -22,6 +21,8 @@
       <div class="search-popup-container">
 
         <form role="search" method="get" class="search-form" action="/store/search">
+          <input type="hidden" name="min" value=0>
+          <input type="hidden" name="max" value="">
           <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s" />
           <button type="submit" class="search-submit"><a href="/store/search"><i class="icon icon-search"></i></a></button>
         </form>
@@ -59,11 +60,19 @@
               <div class="col-md-4 col-sm-12 user-items">
 
                 <ul class="d-flex justify-content-end list-unstyled">
+                  <% if(logedUser != undefined) { %>
+                  <li>
+                      <a href="/dashboard">
+                        <i class="icon icon-dashboard"></i>
+                      </a>
+                  </li>
+                  <% } else { %>
                   <li>
                     <a href="/login">
                       <i class="icon icon-user"></i>
                     </a>
                   </li>
+                  <% } %>
                   <li>
                     <a href="/store/cart">
                       <i class="icon icon-shopping-cart"></i>

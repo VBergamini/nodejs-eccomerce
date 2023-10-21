@@ -3,7 +3,6 @@ const UsersModel = require("../../models/usersModel");
 
 class AdminUsersController {
 
-
     // get
     async usersView(req, res) {
 

@@ -1,6 +1,5 @@
 const express = require('express');
 const AdminUsersController = require('../../controllers/admin/adminUsersController');
-const Authentication = require('../../middlewares/authentication');
 
 class AdminUsersRoute {
 
@@ -11,22 +10,21 @@ class AdminUsersRoute {
     constructor() {
 
         this.#router = express.Router();
-        var authentication = new Authentication();
         var ctrl = new AdminUsersController();
 
         // get
-        this.#router.get('/', authentication.verifyLogedUser, ctrl.usersView);
-        this.#router.get('/create', authentication.verifyLogedUser, ctrl.createUserView);
-        this.#router.get('/update/:id', authentication.verifyLogedUser, ctrl.updateUserView);
+        this.#router.get('/', ctrl.usersView);
+        this.#router.get('/create', ctrl.createUserView);
+        this.#router.get('/update/:id', ctrl.updateUserView);
 
         // post
-        this.#router.post('/create', authentication.verifyLogedUser, ctrl.createUser);
+        this.#router.post('/create', ctrl.createUser);
 
         // put
-        this.#router.put('/update', authentication.verifyLogedUser, ctrl.updateUser);
+        this.#router.put('/update', ctrl.updateUser);
 
         // delete
-        this.#router.delete('/delete', authentication.verifyLogedUser, ctrl.deleteUser);
+        this.#router.delete('/delete', ctrl.deleteUser);
         
     }
     

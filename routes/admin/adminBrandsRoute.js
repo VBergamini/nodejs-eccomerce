@@ -1,7 +1,6 @@
 const express = require('express');
 const multer = require('multer');
 const AdminBrandsController = require('../../controllers/admin/adminBrandsController');
-const Authentication = require('../../middlewares/authentication');
 
 class adminBrandsRoute {
 
@@ -12,7 +11,6 @@ class adminBrandsRoute {
     constructor() {
 
         this.#router = express.Router();
-        var authentication = new Authentication();
         var ctrl = new AdminBrandsController();
 
         var storage = multer.diskStorage(
@@ -30,18 +28,18 @@ class adminBrandsRoute {
         var upload = multer({storage});
         
         // get
-        this.#router.get('/', authentication.verifyLogedUser, ctrl.brandsView);
-        this.#router.get('/create', authentication.verifyLogedUser, ctrl.createBrandView);
-        this.#router.get('/update/:id', authentication.verifyLogedUser, ctrl.updateBrandView);
+        this.#router.get('/', ctrl.brandsView);
+        this.#router.get('/create', ctrl.createBrandView);
+        this.#router.get('/update/:id', ctrl.updateBrandView);
 
         // post
-        this.#router.post('/create', authentication.verifyLogedUser, upload.single('inputImage'), ctrl.createBrand);
+        this.#router.post('/create', upload.single('inputImage'), ctrl.createBrand);
 
         // put
-        this.#router.put('/update', authentication.verifyLogedUser, upload.single('inputImage'), ctrl.updateBrand);
+        this.#router.put('/update', upload.single('inputImage'), ctrl.updateBrand);
 
         // delete
-        this.#router.delete('/delete', authentication.verifyLogedUser, ctrl.deleteBrand);
+        this.#router.delete('/delete', ctrl.deleteBrand);
 
     }
 

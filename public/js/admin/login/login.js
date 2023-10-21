@@ -1,5 +1,4 @@
 
-
 document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById("btnLogin").addEventListener('click', authenticate);
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (r.status == true) {
 
-                    window.location.href = "/";
+                    window.location.href = '/dashboard';
 
                 }
                 else {

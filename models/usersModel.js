@@ -32,7 +32,6 @@ class UsersModel {
 
     }
 
-
     async getUser(id) {
 
         var sql = 'SELECT * FROM tb_users WHERE user_id = ?';

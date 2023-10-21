@@ -10,14 +10,12 @@ class ProfilesModel {
     get profileId() { return this.#profileId; } set profileId(profileId){ this.#profileId = profileId; }
     get profileDescription(){ return this.#profileDescription; } set profileDescription(profileDescription) { this.#profileDescription = profileDescription; }
 
-
     constructor(profileId, profileDescription) {
 
         this.#profileId = profileId;
         this.#profileDescription = profileDescription;
 
     }
-
 
     async recoveryProfile() {
 

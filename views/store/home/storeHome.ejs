@@ -26,13 +26,22 @@
         <div class="widgets g-3">
           <h5 class="widget-title mb-2">Search</h5>
           <div class="widget-search-bar">
-            <!-- <form role="search" method="get" class="search-form" action="/store/search">
-              <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s">
+
+            <form role="search" method="get" class="search-form" action="/store/search">
+              <input type="search" id="search-form" class="form-control mb-0" placeholder="Type and press enter" value="" name="s">
               <button type="submit" class="search-submit pb-2 mb-0 pt-3 mt-4"><a href="/store/search"><i class="icon icon-search" style="font-size: 2rem; color:rgb(150, 150, 150)"></i></a></button>
-            </form> -->
-            <div class="search-form">
-              <input type="search" id="search-form" class="search-submit search-field" placeholder="Type to search">
-            </div>
+              <div class="d-flex">
+                <div class="w-50">
+                  <label for="minValue" class="col-sm-2 col-form-label">Min</label>
+                  <input type="number" id="minValue" class="form-control" name="min" value="" placeholder="$ 0.00">
+                </div>
+                <div class="w-50">
+                  <label for="maxValue" class="col-sm-2 col-form-label">Max</label>
+                  <input type="number" id="maxValue" class="form-control" name="max" value="" placeholder="$ 200.00">
+                </div>
+              </div>
+            </form>
+            
           </div> 
         </div>
 
@@ -48,29 +57,7 @@
         </div>
 
         <div class="widgets">
-          <h5 class="widget-title mb-2 mt-4">Product Filter &lt To Do &gt</h5>
-          <ul class="product-tags sidebar-list list-unstyled">
-
-            <li class="tags-item">
-              <a href="">Less than $10</a>
-            </li>
-
-            <li class="tags-item">
-              <a href="">$10- $20</a>
-            </li>
-
-            <li class="tags-item">
-              <a href="">$20- $30</a>
-            </li>
-
-            <li class="tags-item">
-              <a href="">$30- $40</a>
-            </li>
-
-            <li class="tags-item">
-              <a href="">$40- $50</a>
-            </li>
-          </ul>
+          <h5 class="widget-title mb-2 mt-4">Something &lt To Do &gt</h5>
         </div>
       </div>
     </div>

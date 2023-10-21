@@ -155,10 +155,44 @@ class ProductsModel {
         
     }
 
-    async searchProducts(query) {
+    async searchProducts(query, minValue, maxValue) {
+        
+        var sql = '';
+        var values = [];
 
-        var sql = `SELECT * FROM tb_products WHERE prd_name LIKE ?`;
-        var values = [`%${query}%`];
+        if(query == '') { // price filter only
+
+            if(maxValue != '') {
+
+                sql = `SELECT p.* FROM tb_products p LEFT JOIN tb_categories c ON p.cat_id = c.cat_id LEFT JOIN tb_brands b ON p.brand_id = b.brand_id WHERE prd_price BETWEEN ? AND ?`;
+                values = [minValue, maxValue];
+
+            }
+            else {
+
+                sql = `SELECT p.* FROM tb_products p LEFT JOIN tb_categories c ON p.cat_id = c.cat_id LEFT JOIN tb_brands b ON p.brand_id = b.brand_id WHERE prd_price > ?`;
+                values = [minValue];
+
+            }
+    
+        }
+        else { // name and price filter
+
+            if(maxValue != '') {
+
+                sql = `SELECT p.* FROM tb_products p LEFT JOIN tb_categories c ON p.cat_id = c.cat_id LEFT JOIN tb_brands b ON p.brand_id = b.brand_id WHERE (prd_name LIKE ? OR cat_name LIKE ? OR brand_name LIKE ?) AND prd_price BETWEEN ? AND ?`;
+                values = [`%${query}%`, `%${query}%`, `%${query}%`, minValue, maxValue];
+
+            }
+            else {
+
+                sql = `SELECT p.* FROM tb_products p LEFT JOIN tb_categories c ON p.cat_id = c.cat_id LEFT JOIN tb_brands b ON p.brand_id = b.brand_id WHERE (prd_name LIKE ? OR cat_name LIKE ? OR brand_name LIKE ?) AND prd_price > ?`;
+                values = [`%${query}%`, `%${query}%`, `%${query}%`, minValue];
+
+            }
+
+        }
+
         var listProducts = [];
 
         var rows = await conexao.ExecutaComando(sql, values);

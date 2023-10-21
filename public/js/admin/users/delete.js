@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-
     var buttons = document.querySelectorAll(".btnDelete");
 
     for (let i = 0; i<buttons.length; i++) {
@@ -22,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     method: 'DELETE',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({id: idDelete})
+                    
                 })
                 .then(r => {
 
