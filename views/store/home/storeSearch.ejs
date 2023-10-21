@@ -3,30 +3,8 @@
         <div class="tab-content">
             <div id="all" data-tab-content class="active">
                 <div class="row d-flex flex-wrap">
-                  <% if(url.includes('/category')) { %>
-  
-                      <% categoryList.map(function(value, index) { %>
-  
-                          <% if(value.categoryId == paramId) { %>
-                              <a href="/store/categories/<%= value.categoryId %>" id="<%= value.categoryId %>" class="h2 text-secondary selectedCategory">Category <%= value.categoryName %></a>
-                          <% } %>
-  
-                      <% }) %>
-  
-                  <%} else if(url.includes('/brand')) { %>
-  
-                      <% brandList.map(function(value, index) { %>
-  
-                          <% if(value.brandId == paramId) { %>
-                              <a href="/store/brand/<%= value.brandId %>" id="<%= value.brandId %>" class="h2 text-secondary selectedBrand">Brand <%= value.brandName %></a>
-                          <% } %>
-  
-                      <% }) %>
-  
-                  <%} else { %>
-                      <span class="h2 text-secondary">All Products</span>
-                    <% } %>
-                  <% productList.map(function(value,index) { %>
+                    <span class="h2 text-secondary">Search Result</span>
+                    <% productList.map(function(value,index) { %>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
                         <div class="image-holder">
                             <img src="<%= value.productImage %>" alt="<%= value.productName %>" class="product-image">

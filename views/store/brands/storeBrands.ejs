@@ -35,7 +35,9 @@
                         <% brandList.map(function(value, index) { %>
                         <div class="product-item col-lg-4 col-md-6 col-sm-6">
                             <div class="image-holder">
-                                <img src="<%= value.brandImage %>" alt="<%= value.brandName %>" class="product-image">
+                                <a href="/store/brands/<%= value.brandId %>">
+                                    <img src="<%= value.brandImage %>" alt="<%= value.brandName %>" class="product-image">
+                                </a>
                             </div>
                             <div class="product-detail">
                                 <h3 class="product-title">

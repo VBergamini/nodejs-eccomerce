@@ -24,12 +24,16 @@
       <div class="widgets widget-menu">
 
         <div class="widgets g-3">
-          <h5 class="widget-title mb-1">Search &lt To Do &gt</h5>
-          <div class="col-auto d-flex align-top">
-            <label for="searchField" class="visually-hidden">Search</label>
-            <input class="form-control h-75" type="text" id="searchField" placeholder="Search here" />
-            <a href="/store/search/"><button class="btn btn-dark" id="btnSearch"><i class="fas fa-search"></i></button></a>
-          </div>
+          <h5 class="widget-title mb-2">Search</h5>
+          <div class="widget-search-bar">
+            <!-- <form role="search" method="get" class="search-form" action="/store/search">
+              <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s">
+              <button type="submit" class="search-submit pb-2 mb-0 pt-3 mt-4"><a href="/store/search"><i class="icon icon-search" style="font-size: 2rem; color:rgb(150, 150, 150)"></i></a></button>
+            </form> -->
+            <div class="search-form">
+              <input type="search" id="search-form" class="search-submit search-field" placeholder="Type to search">
+            </div>
+          </div> 
         </div>
 
         <div class="widgets">

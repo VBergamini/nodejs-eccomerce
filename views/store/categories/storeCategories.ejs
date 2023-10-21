@@ -35,7 +35,9 @@
                     <% categoryList.map(function(value, index) { %>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
                         <div class="image-holder">
-                            <img src="<%= value.categoryImage %>" alt="<%= value.categoryName %>" class="product-image">
+                            <a href="/store/categories/<%= value.categoryId %>">
+                                <img src="<%= value.categoryImage %>" alt="<%= value.categoryName %>" class="product-image">
+                            </a>    
                         </div>
                         <div class="product-detail">
                             <h3 class="product-title">

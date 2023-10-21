@@ -125,7 +125,7 @@ class ProductsModel {
 
         var sql = 'SELECT * FROM tb_products p INNER JOIN tb_categories c ON p.cat_id = c.cat_id INNER JOIN tb_brands b ON p.brand_id = b.brand_id';
         var rows = await conexao.ExecutaComando(sql);
-        var listProducs = [];
+        var listProducts = [];
 
         if (rows.length > 0) {
 
@@ -145,16 +145,52 @@ class ProductsModel {
 
                 }
 
-                listProducs.push(new ProductsModel(row['prd_id'], row['prd_cod'], row['prd_name'], row['prd_quantity'], row['cat_id'], row['brand_id'], row['cat_name'], row['brand_name'], row['prd_price'], image));
+                listProducts.push(new ProductsModel(row['prd_id'], row['prd_cod'], row['prd_name'], row['prd_quantity'], row['cat_id'], row['brand_id'], row['cat_name'], row['brand_name'], row['prd_price'], image));
 
             }
 
         }
 
-        return listProducs;
+        return listProducts;
         
     }
 
+    async searchProducts(query) {
+
+        var sql = `SELECT * FROM tb_products WHERE prd_name LIKE ?`;
+        var values = [`%${query}%`];
+        var listProducts = [];
+
+        var rows = await conexao.ExecutaComando(sql, values);
+
+        if(rows.length > 0) {
+            
+            for(let i=0; i< rows.length; i++) {
+
+                let row = rows[i];
+                let image = '';
+
+                if(row['prd_image'] != null) {
+
+                    image = global.PATH_TO_PRODUCTS_IMAGE + row['prd_image'];
+                    
+                }
+                else {
+    
+                    image = global.PATH_TO_PRODUCTS_IMAGE + 'No-image.png';
+    
+                }
+
+                listProducts.push(new ProductsModel(row['prd_id'], row['prd_code'], row['prd_name'], row['prd_quantity'], row['cat_id'], row['brand_id'], row['cat_name'], row['brand_name'], row['prd_price'], image));
+
+            }
+
+        }
+
+        return listProducts;
+
+    }
+    
 }
 
 module.exports = ProductsModel;

@@ -10,50 +10,35 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Bootstrap5 -->
+
     <link rel="stylesheet" type="text/css" href="/css/essentials/bootstrap/bootstrap.min.css">
-    <!-- Frente da loja template -->
+    <link rel="stylesheet" type="text/css" href="/css/essentials/icomoon/icomoon.css">
+    <!-- <link href="/css/essentials/fontawesome/all.min.css" rel="stylesheet" type="text/css"> -->
     <link rel="stylesheet" type="text/css" href="/css/store/vendor.css">
     <link rel="stylesheet" type="text/css" href="/css/store/style.css">
-    <link rel="stylesheet" type="text/css" href="/css/store/normalize.css">
-    <!-- Font Awesome -->
-    <link href="/css/essentials/fontawesome/all.min.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div class="search-popup">
       <div class="search-popup-container">
 
-        <form role="search" method="get" class="search-form" action="">
+        <form role="search" method="get" class="search-form" action="/store/search">
           <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s" />
-          <button type="submit" class="search-submit"><a href="#"><i class="icon icon-search"></i></a></button>
+          <button type="submit" class="search-submit"><a href="/store/search"><i class="icon icon-search"></i></a></button>
         </form>
 
         <h5 class="cat-list-title">Browse Categories</h5>
 
         <ul class="cat-list">
-          <li class="cat-list-item">
-            <a href="shop.html" title="Men Jackets">Men Jackets</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="shop.html" title="Fashion">Fashion</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="shop.html" title="Casual Wears">Casual Wears</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="shop.html" title="Women">Women</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="shop.html" title="Trending">Trending</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="shop.html" title="Hoodie">Hoodie</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="shop.html" title="Kids">Kids</a>
-          </li>
+          <% categoryList.map(function(value, index) { %>
+            <div class="d-inline-flex p-2">
+              <li>
+                <a href="/store/categories/<%= value.categoryId %>">
+                  <img src="<%= value.categoryImage %>" title="<%= value.categoryName %>" width="70">
+                  <h5><%= value.categoryName %></h5>
+                </a>
+              </li>
+            </div>
+          <% }) %>
         </ul>
 
       </div>
@@ -76,22 +61,22 @@
                 <ul class="d-flex justify-content-end list-unstyled">
                   <li>
                     <a href="/login">
-                      <i class="fas fa-user"></i>
+                      <i class="icon icon-user"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="cart.html">
-                      <i class="fa-solid fa-cart-plus"></i>
+                    <a href="/store/cart">
+                      <i class="icon icon-shopping-cart"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="wishlist.html">
-                      <i class="fas fa-heart"></i>
+                    <a href="/store/wishlist">
+                      <i class="icon icon-heart"></i>
                     </a>
                   </li>
                   <li class="user-items search-item pe-3">
                     <a href="#" class="search-button">
-                      <i class="fas fa-search"></i>
+                      <i class="icon icon-search"></i>
                     </a>
                   </li>
                 </ul>
@@ -115,10 +100,10 @@
 
                     <ul class="menu-list">
                       <li class="menu-item has-sub">
-                        <a href="/store" class="item-anchor d-flex align-item-center" data-effect="Home">HOME</a>
+                        <a href="/store" class="item-anchor d-flex align-item-center" data-effect="Home">Home</a>
                       </li>
                       <li class="menu-item has-sub">
-                        <a href="/store/categories/" class="item-anchor d-flex align-item-center" data-effect="Categories">CATEGORIES <i class="fas fa-chevron-down fa-sm"></i></a>
+                        <a href="/store/categories/" class="item-anchor d-flex align-item-center" data-effect="Categories">Categories<i class="icon icon-chevron-down"></i></a>
                         <ul class="submenu">
                           <% categoryList.map(function(value, index) { %>
                           <li>
@@ -128,7 +113,7 @@
                         </ul>
                       </li>
                       <li class="menu-item has-sub">
-                        <a href="/store/brands" class="item-anchor d-flex align-item-center" data-effect="Brands">BRANDS <i class="fas fa-chevron-down fa-sm"></i></a>
+                        <a href="/store/brands" class="item-anchor d-flex align-item-center" data-effect="Brands">Brands<i class="icon icon-chevron-down"></i></a>
                           <ul class="submenu">
                             <% brandList.map(function(value, index) { %>
                             <li>
@@ -287,7 +272,6 @@
     <script src="/js/essentials/plugins.js"></script>
     <script src="/js/essentials/script.js"></script>
     <script src="/js/essentials/modernizr.js"></script>
-    <script src="/js/store/search.js"></script>
- 
+    
   </body>
 </html>

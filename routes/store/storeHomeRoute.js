@@ -17,9 +17,6 @@ class StoreHomeRoute {
         this.#router.get('/', ctrl.storeFrontView);
         this.#router.get('/search', ctrl.searchView);
 
-        // post
-        this.#router.post('/search', ctrl.searchView);
-
     }
     
  }

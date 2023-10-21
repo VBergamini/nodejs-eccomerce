@@ -11,6 +11,10 @@
       $('#header-nav').on('click', '.btn-close-search', function(e) {
         $('.search-popup').toggleClass('is-visible');
       });
+
+      $('.search-submit').on('click', function(e) {
+        $('.search-popup').toggleClass('is-visible');
+      });
       
       $(".search-popup-trigger").on("click", function(b) {
           b.preventDefault();

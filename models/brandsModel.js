@@ -143,7 +143,7 @@ class BrandsModel {
 
                 let row = rows[i];
 
-                let product = new ProductsModel(row);
+                let product = new ProductsModel();
                 product = await product.findProduct(row['prd_id']);
                 brandList.push(product);
 
