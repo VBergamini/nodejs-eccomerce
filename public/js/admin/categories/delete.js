@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     else {
 
-                        alert('Error on delete category');
+                        alert(r.msg);
 
                     }
                 })

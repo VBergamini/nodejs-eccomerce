@@ -166,6 +166,15 @@ class BrandsModel {
 
     }
 
+    async brandIsEmpty(brandId) {
+
+        var sql = 'SELECT p.prd_id FROM tb_products p INNER JOIN tb_brands b ON p.brand_id = b.brand_id WHERE p.brand_id = ?';
+        var values = [brandId];
+
+        return await conexao.ExecutaComando(sql, values) == 0;
+
+    }
+
 }
 
 module.exports = BrandsModel;

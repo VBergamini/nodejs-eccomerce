@@ -115,34 +115,50 @@ class AdminCategoriesController {
     async deleteCategory(req, res) {
 
         var ok = true;
+        var msg = '';
 
         if(req.body.id != '') {
 
             let category = new CategoriesModel();
-            category = await category.findCategory(req.body.id);
 
-            if(category.haveImage == true) {
+            if(await category.categoryIsEmpty(req.body.id) == true) {
 
-                let fileExist = fs.existsSync(global.PROJECT_ROOT + '/public/' + category.categoryImage);
+                category = await category.findCategory(req.body.id);
+
+                if(category.haveImage == true) {
+
+                    let fileExist = fs.existsSync(global.PROJECT_ROOT + '/public/' + category.categoryImage);
                 
-                if(fileExist) {
+                    if(fileExist) {
                     
-                    // delete the storaged image
-                    fs.unlinkSync(global.PROJECT_ROOT + '/public/' +  category.categoryImage);
+                        // delete the storaged image
+                        fs.unlinkSync(global.PROJECT_ROOT + '/public/' +  category.categoryImage);
     
+                    }
+
                 }
 
+                ok = await category.deleteCategory(req.body.id);
+                msg = 'Successfully deleted category'
+            
             }
+            else {
 
-            ok = await category.deleteCategory(req.body.id);
+                ok = false;
+                msg = 'Please remove all products from this category first';
+
+            }
 
         }
         else {
 
             ok = false;
+            msg = 'Error on request category';
+
         }
 
-        res.send({ok: ok});
+        res.send({ok: ok, msg:msg});
+
     }
     
 }

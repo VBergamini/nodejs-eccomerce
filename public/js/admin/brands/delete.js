@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     else {
 
-                        alert('Error on delete brand');
+                        alert(r.msg);
 
                     }
 

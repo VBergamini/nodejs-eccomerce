@@ -161,6 +161,15 @@ class CategoriesModel {
         
     }
 
+    async categoryIsEmpty(catId) {
+
+        var sql = 'SELECT p.prd_id FROM tb_products p INNER JOIN tb_categories c ON p.cat_id = c.cat_id WHERE p.cat_id = ?';
+        var values = [catId];
+
+        return await conexao.ExecutaComando(sql, values) == 0;
+
+    }
+
 }
 
 module.exports = CategoriesModel;
