@@ -13,6 +13,10 @@
     
       <%- include(global.PROJECT_ROOT+'/views/store/home/storeSearch.ejs') %>
 
+  <% } else if(url.includes('products')) { %>
+
+      <%- include(global.PROJECT_ROOT+'/views/store/products/singleProduct.ejs') %>
+
   <% } else { %>
     
      <%- include(global.PROJECT_ROOT+'/views/store/products/storeProducts.ejs') %>
@@ -32,11 +36,11 @@
               <button type="submit" class="search-submit pb-2 mb-0 pt-3 mt-4"><a href="/store/search"><i class="icon icon-search" style="font-size: 2rem; color:rgb(150, 150, 150)"></i></a></button>
               <div class="d-flex">
                 <div class="w-50">
-                  <label for="minValue" class="col-sm-2 col-form-label">Min</label>
+                  <label for="minValue" class="col-sm-2 col-form-label fw-light">Min</label>
                   <input type="number" id="minValue" class="form-control" name="min" value="" placeholder="$ 0.00">
                 </div>
                 <div class="w-50">
-                  <label for="maxValue" class="col-sm-2 col-form-label">Max</label>
+                  <label for="maxValue" class="col-sm-2 col-form-label fw-light">Max</label>
                   <input type="number" id="maxValue" class="form-control" name="max" value="" placeholder="$ 200.00">
                 </div>
               </div>

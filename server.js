@@ -9,10 +9,7 @@ const AdminUsersRoute = require('./routes/admin/adminUsersRoute');
 const AdminProductsRoute = require('./routes/admin/adminProductsRoute');
 const AdminBrandsRoute = require('./routes/admin/adminBrandsRoute');
 const AdminCategoriesRoute = require('./routes/admin/adminCategoriesRoute');
-const StoreHomeRoute = require('./routes/store/storeHomeRoute');
-const StoreCategoriesRoute = require('./routes/store/storeCategoriesRoute');
-const StoreBrandsRoute = require('./routes/store/storeBrandsRoute');
-
+const StoreRoute = require('./routes/store/storeRoute');
 
 const app = express();
 const auth = new Authentication();
@@ -39,15 +36,9 @@ app.set('adminLayout', './admin/layout/adminLayout');
 app.set('storeLayout', './store/layout/storeLayout');
 
 // public routes
-var storeHome = new StoreHomeRoute();
-app.use('/', storeHome.router);
-app.use('/store', storeHome.router);
-
-var storeCategories = new StoreCategoriesRoute();
-app.use('/store/categories', storeCategories.router);
-
-var storeBrands = new StoreBrandsRoute();
-app.use('/store/brands', storeBrands.router);
+var storeRoute = new StoreRoute();
+app.use('/', storeRoute.router);
+app.use('/store', storeRoute.router);
 
 var adminLogin = new AdminLoginRoute();
 app.use('/login', adminLogin.router);
@@ -77,5 +68,5 @@ global.PATH_TO_CATEGORIES_IMAGE = '/img/admin/categories/';
 global.PATH_TO_BRANDS_IMAGE = '/img/admin/brands/';
 
 const server = app.listen('5001', function() {
-    console.log('Server started at http://localhost:5001/store');
+    console.log('Server started at http://localhost:5001');
 });

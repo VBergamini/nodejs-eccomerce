@@ -8,12 +8,14 @@
                             <% if(value.categoryId == paramId) { %>
                                 <span class="h2 text-secondary">Category <%= value.categoryName %></span>
                             <% } %>
-                        <% })%>
+                        <% }) %>
                     
                     <% productList.map(function(value, index) { %>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
                         <div class="image-holder">
-                            <img src="<%= value.productImage %>" alt="<%= value.productName %>" class="product-image">
+                            <a href="/store/products/<%= value.productId %>">
+                                <img src="<%= value.productImage %>" alt="<%= value.productName %>" class="product-image">
+                            </a>
                         </div>
                         <div class="cart-concern">
                             <div class="cart-button d-flex justify-content-between align-items-center">
