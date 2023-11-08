@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const AdminBrandsController = require('../../controllers/admin/adminBrandsController');
+const Authentication = require('../../middlewares/authentication');
 
 class adminBrandsRoute {
 
@@ -9,6 +10,8 @@ class adminBrandsRoute {
     get router() { return this.#router } set router(router) { this.#router = router }
 
     constructor() {
+
+        var auth = new Authentication();
 
         this.#router = express.Router();
         var ctrl = new AdminBrandsController();

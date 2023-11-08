@@ -13,7 +13,7 @@ class AdminLoginController {
     logoutView(req, res) {
 
         res.clearCookie('logedUser');
-        res.redirect('/store');
+        res.redirect('/');
 
     }
 

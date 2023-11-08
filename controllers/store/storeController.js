@@ -122,6 +122,42 @@ class StoreController {
 
     }
 
+    // get
+    async addToCart(req, res) {
+
+        if(req.params.id != null) {
+
+            let product = new ProductsModel();
+            product = await product.findProduct(req.params.id);
+
+            if(product != null) {
+
+                let productJson = {
+                    id: product.productId,
+                    name: product.productName,
+                    price: product.productPrice,
+                    image: product.productImage,
+                    quantity: 1
+                }
+
+                res.send({ok: true, product: productJson});
+
+            }
+            else {
+
+                res.send({ok: false, msg: 'Product not found'});
+
+            }
+            
+        }
+        else {
+
+            res.send({ok: false, msg: 'Invalid params'});
+
+        }
+
+    }
+
     // post
     async searchView(req, res) {
 

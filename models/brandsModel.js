@@ -116,7 +116,7 @@ class BrandsModel {
             }
             else {
 
-                image = global.PATH_TO_BRANDS_IMAGE + 'brands/No-image.png';
+                image = global.PATH_TO_BRANDS_IMAGE + 'No-image.png';
 
             }
 

@@ -43,7 +43,7 @@ app.use('/store', storeRoute.router);
 var adminLogin = new AdminLoginRoute();
 app.use('/login', adminLogin.router);
 
-// to authenticate
+// to authenticate loged user
 app.use(auth.verifyLogedUser);
 
 // private routes

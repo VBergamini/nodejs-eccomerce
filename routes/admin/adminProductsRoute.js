@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const AdminProductsController = require('../../controllers/admin/adminProductsController');
+const Authentication = require('../../middlewares/authentication');
 
 class AdminProductsRoute {
 
@@ -10,7 +11,10 @@ class AdminProductsRoute {
 
     constructor() {
 
+        var auth = new Authentication();
+
         this.#router = express.Router();
+        var ctrl = new AdminProductsController;
         
         var storage = multer.diskStorage(
             {
@@ -25,8 +29,6 @@ class AdminProductsRoute {
         );
 
         var upload = multer({storage});
-
-        var ctrl = new AdminProductsController;
 
         // get
         this.#router.get('/', ctrl.productsView);

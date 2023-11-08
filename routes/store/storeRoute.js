@@ -21,6 +21,7 @@ class StoreRoute {
         this.#router.get('/brands/:id', ctrl.brandsFilterView);
         this.#router.get('/store/products/:id', ctrl.singleProductView);
         this.#router.get('/store/search', ctrl.searchView);
+        this.#router.get('/store/cart/add/:id', ctrl.addToCart);
 
     }
     

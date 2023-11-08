@@ -50,7 +50,7 @@
       <div id="header-wrap">
         <nav class="secondary-nav border-bottom">
           <div class="container">
-            <div class="row d-flex align-items-center">
+            <div class="row d-flex align-items-center mt-3">
               <div class="col-md-4 header-contact">
                 <p>Let's talk! <strong>+57 444 11 00 35</strong>
                 </p>
@@ -75,11 +75,6 @@
                   </li>
                   <% } %>
                   <li>
-                    <a href="/store/cart">
-                      <i class="icon icon-shopping-cart"></i>
-                    </a>
-                  </li>
-                  <li>
                     <a href="/store/wishlist">
                       <i class="icon icon-heart"></i>
                     </a>
@@ -89,7 +84,32 @@
                       <i class="icon icon-search"></i>
                     </a>
                   </li>
+                  <li>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#cartModal" id="btnModal" class="position-relative">
+                      <i class="icon icon-shopping-cart p-2"></i>
+                      <span id="countProducts" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
+                    </a>
+                  </li>
                 </ul>
+
+
+                <div id="cartModal" class="modal fade modal-lg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header text-center">
+                              <h2 class="modal-title">Cart</h2>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body table-responsive" id="cartBody">
+                              
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Order Now</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
               </div>
             </div>
@@ -101,16 +121,16 @@
             <div class="row d-flex align-items-center">
               <div class="col-lg-2 col-md-2">
                 <div class="main-logo">
-                  <a href="/store"><img src="/img/store/logo/logo.png" alt="logo"></a>
+                  <a href="/"><img src="/img/store/logo/logo.png" alt="logo"></a>
                 </div>
               </div>
               <div class="col-lg-10 col-md-10">
-                <div class="navbar">
+                <div class="navbar" style="z-index: 0;">
                   <div id="main-nav" class="stellarnav d-flex justify-content-end right">
 
                     <ul class="menu-list">
                       <li class="menu-item has-sub">
-                        <a href="/store" class="item-anchor d-flex align-item-center" data-effect="Home">Home</a>
+                        <a href="/" class="item-anchor d-flex align-item-center" data-effect="Home">Home</a>
                       </li>
                       <li class="menu-item has-sub">
                         <a href="/store/categories/" class="item-anchor d-flex align-item-center" data-effect="Categories">Categories<i class="icon icon-chevron-down"></i></a>
@@ -282,6 +302,7 @@
     <script src="/js/essentials/plugins.js"></script>
     <script src="/js/essentials/script.js"></script>
     <script src="/js/essentials/modernizr.js"></script>
+    <script src="/js/store/cart.js"></script>
     
   </body>
 </html>

@@ -1,6 +1,7 @@
 const express = require('express');
 const AdminCategoriesController = require('../../controllers/admin/adminCategoriesController');
 const multer = require('multer');
+const Authentication = require('../../middlewares/authentication');
 
 class adminCategoriesRoute {
 
@@ -10,7 +11,10 @@ class adminCategoriesRoute {
 
     constructor() {
 
+        var auth = new Authentication();
+
         this.#router = express.Router();
+        var ctrl = new AdminCategoriesController();
 
         var storage = multer.diskStorage(
             {
@@ -24,8 +28,6 @@ class adminCategoriesRoute {
             }
         )
         var upload = multer({storage});
-
-        var ctrl = new AdminCategoriesController();
 
         // get
         this.#router.get('/', ctrl.categoriesView);
