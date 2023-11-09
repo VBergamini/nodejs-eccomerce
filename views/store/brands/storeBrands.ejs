@@ -6,7 +6,7 @@
                     <% if(url != 'brands') { %>
                         <% brandList.map(function(value, index) { %>
                             <% if(value.brandId == paramId) { %>
-                                <span class="h2 text-secondary">Brand <%= value.brandName %></span>
+                                <span class="h2 text-secondary"><%= value.brandName %></span>
                             <% } %>
                         <% }) %>
                     
@@ -28,7 +28,7 @@
                                 <h3 class="product-title">
                                     <a href="#"><%= value.productName %></a>
                                 </h3>
-                                <div class="item-price text-primary"><%= value.productPrice %></div>
+                                <div class="item-price text-primary">$<%= value.productPrice %></div>
                             </div>
                         </div>
                         <% }) %>

@@ -37,15 +37,15 @@ class Authentication {
                     res.locals.logedUser = user;
                     next();
                 }
-                else {
+                else{
 
-                    res.send({ok: false, msg: 'No permission'})
+                    res.send({ok: false, msg: 'No permission'});
                     //res.redirect('/login');
                 }
         }
         else{
 
-            res.send({ok: false, msg: 'You need to login first!'})
+            res.send({ok: false, msg: 'You need to login first!'});
             //res.redirect("/login");
         }
     }

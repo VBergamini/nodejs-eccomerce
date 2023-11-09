@@ -31,12 +31,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
     })
 
+    function onChangeInput() {
+
+        var value = this.value;
+        if(value != '' && isNaN(value) == false) {
+
+            let id = this.dataset.id;
+
+            if(value > 999) {
+                
+                value = 999
+
+            }
+            else {
+
+                if(value < 1) {
+
+                    value = 1
+
+                }
+            }
+
+            valueUpdate(id, value, this);
+
+        }
+    }
+
+    function valueUpdate(id, quantity, btn) {
+
+        var product = productsList.find(x => x.id == id);
+        if(product != null) {
+
+            product.quantity = quantity;
+            product.value = (product.price * product.quantity).toFixed(2);
+            localStorage.setItem('cart', JSON.stringify(productsList));
+            btn.parentElement.parentElement.previousElementSibling.innerHTML = "$" + product.value;
+  
+        }
+
+        document.querySelector('#prdQtty-' + id).value = quantity;
+
+    }
+
+    function removeProduct() {
+
+        var id = this.dataset.id;
+        productsList = productsList.filter(x => x.id != id);
+        localStorage.setItem('cart', JSON.stringify(productsList));
+        this.parentElement.parentElement.remove();
+        document.querySelector('#countProducts').innerHTML = productsList.length;
+
+    }
+
     function decrement() {
 
         var id = this.dataset.id;
         var qtty = parseInt(document.querySelector('#prdQtty-'+id).value);
-        qtty--;
-        document.querySelector('#prdQtty-'+id).value = qtty;
+
+        if(qtty > 1) {
+            qtty--;
+        }
+
+        valueUpdate(id, qtty, this);
         
     }
 
@@ -44,8 +100,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         var id = this.dataset.id;
         var qtty = parseInt(document.querySelector('#prdQtty-'+id).value);
-        qtty++;
-        document.querySelector('#prdQtty-'+id).value = qtty;
+        
+        if(qtty < 999) {
+            qtty++;
+        }
+
+        valueUpdate(id, qtty, this);
 
     }
 
@@ -54,12 +114,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if(productsList.length > 0) {
 
             let html = `
-                        <table class='table'>
+                        <table class='table align-middle'>
                             <thead>
                                 <tr>
                                     <th>Image</th>
                                     <th>Name</th>
-                                    <th>Price</th>
+                                    <th>Unit Price</th>
+                                    <th>Total Price</th>
                                     <th>Quantity</th>
                                     <th>Actions</th>
                                 </tr>
@@ -74,16 +135,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         <tr>
                             <td><img src="${product.image}" width="100"</td>
                             <td>${product.name}</td>
-                            <td>US$${product.price}</td>
+                            <td>$${product.price}</td>
+                            <td>$${product.value}</td>
                             <td>
-                                <div style="display:flex">
+                                <div class="input-group" style="display:flex">
                                     <button data-id="${product.id}" class="btn btn-default decrement"><i class="fas fa-minus"></i></button>
-                                    <input id="prdQtty-${product.id}" class="form-control" style="width: 75px" value="${product.quantity}" type="number" />
+                                    <input id="prdQtty-${product.id}"data-id="${product.id}" class="form-control mt-2 mb-2 prdQtty" style="max-width: 100px" value="${product.quantity}" type="number" />
                                     <button data-id="${product.id}" class="btn btn-default increment"><i class="fas fa-plus"></i></button>
                                 </div>
                             </td>
                             <td>
-                                <button class="btn btn-outline-danger fas fa-trash"></button>
+                                <button class="btn btn-outline-danger fas fa-trash btnRemove" data-id="${product.id}" style="height: 40px"></button>
                             </td>
                         </tr>
                         `
@@ -105,6 +167,20 @@ document.addEventListener('DOMContentLoaded', function() {
             btnIncrement.forEach(function(value, index) {
 
                 value.onclick = increment;
+
+            })
+
+            let btnRemove = document.querySelectorAll('.btnRemove');
+            btnRemove.forEach(function(value, index) {
+
+                value.onclick = removeProduct;
+
+            })
+
+            let inputQtty = document.querySelectorAll('.prdQtty');
+            inputQtty.forEach(function(value, index) {
+
+                value.onchange = onChangeInput;
 
             })
 
@@ -138,10 +214,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(product != null) {
 
                     product.quantity++;
+                    product.value = (product.price * product.quantity).toFixed(2);
 
                 }
                 else {
 
+                    r.product.value = r.product.price;
                     productsList.push(r.product);
 
                 }

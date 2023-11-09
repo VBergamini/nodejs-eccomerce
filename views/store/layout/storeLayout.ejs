@@ -92,11 +92,11 @@
                   </li>
                 </ul>
 
-
+                <!-- CART MODAL -->
                 <div id="cartModal" class="modal fade modal-lg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
-                      <div class="modal-content">
-                          <div class="modal-header text-center">
+                      <div class="modal-content" style="text-align-last: center;">
+                          <div class="modal-header">
                               <h2 class="modal-title">Cart</h2>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
@@ -110,6 +110,7 @@
                       </div>
                   </div>
               </div>
+              <!-- CART MODAL END -->
 
               </div>
             </div>
@@ -125,7 +126,7 @@
                 </div>
               </div>
               <div class="col-lg-10 col-md-10">
-                <div class="navbar" style="z-index: 0;">
+                <div class="navbar" style="z-index:1">
                   <div id="main-nav" class="stellarnav d-flex justify-content-end right">
 
                     <ul class="menu-list">
@@ -137,13 +138,13 @@
                         <ul class="submenu">
                           <% categoryList.map(function(value, index) { %>
                           <li>
-                            <a href="/store/categories/<%= value.categoryId %>" id="<%= value.categoryId %>" class="selectedCategory"><%= value.categoryName %></a>
+                            <a href="/store/categories/<%= value.categoryId %>" id="<%= value.categoryId %>" class="item-anchor selectedCategory"><%= value.categoryName %></a>
                           </li>
                           <% }) %>
                         </ul>
                       </li>
                       <li class="menu-item has-sub">
-                        <a href="/store/brands" class="item-anchor d-flex align-item-center" data-effect="Brands">Brands<i class="icon icon-chevron-down"></i></a>
+                        <a href="/store/brands/" class="item-anchor d-flex align-item-center" data-effect="Brands">Brands<i class="icon icon-chevron-down"></i></a>
                           <ul class="submenu">
                             <% brandList.map(function(value, index) { %>
                             <li>
