@@ -1,6 +1,6 @@
 const Database = require('../db/database');
 
-const conexao = new Database();
+const connect = new Database();
 
 class UsersModel {
 
@@ -36,7 +36,7 @@ class UsersModel {
 
         var sql = 'SELECT * FROM tb_users WHERE user_id = ?';
         var values = [id];
-        var rows = await conexao.ExecutaComando(sql, values);
+        var rows = await connect.QueryCommand(sql, values);
 
         if (rows.length > 0) {
 
@@ -62,7 +62,7 @@ class UsersModel {
 
             let sql = 'INSERT INTO tb_users (user_name, user_email, user_active, user_password, pro_id) VALUES (?, ?, ?, ?, ?)';
             let values = [this.#userName, this.#userEmail, this.#userActive, this.#userPassword, this.#profileId];
-            let result = await conexao.ExecutaComandoNonQuery(sql, values);
+            let result = await connect.NonQueryCommand(sql, values);
 
             return result;
 
@@ -71,7 +71,7 @@ class UsersModel {
 
             let sql = 'UPDATE tb_users SET user_name = ?, user_email = ?, user_active = ?, user_password = ?, pro_id = ? WHERE user_id = ?';
             let values = [this.#userName, this.#userEmail, this.#userActive, this.#userPassword, this.#profileId, this.#userId];
-            let result = await conexao.ExecutaComandoNonQuery(sql, values);
+            let result = await connect.NonQueryCommand(sql, values);
 
             return result;
 
@@ -83,7 +83,7 @@ class UsersModel {
 
         var list = [];
         var sql = "SELECT * FROM tb_users u INNER JOIN tb_profiles p ON u.pro_id = p.pro_id";
-        var rows = await conexao.ExecutaComando(sql);
+        var rows = await connect.QueryCommand(sql);
 
         for (let i=0; i<rows.length; i++) {
 
@@ -101,7 +101,7 @@ class UsersModel {
 
         var sql = "DELETE FROM tb_users WHERE user_id = ?";
         var values = [id];
-        var result = await conexao.ExecutaComandoNonQuery(sql, values);
+        var result = await connect.NonQueryCommand(sql, values);
 
         return result;
 
@@ -111,7 +111,7 @@ class UsersModel {
 
         var sql = "SELECT * FROM tb_users WHERE user_email = ? AND user_password = ? AND user_active = 'Y'";
         var values = [email, password];
-        var rows = await conexao.ExecutaComando(sql, values);
+        var rows = await connect.QueryCommand(sql, values);
 
         if (rows.length > 0) {
 

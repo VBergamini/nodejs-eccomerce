@@ -183,6 +183,15 @@ class StoreController {
 
     }
 
+    async saveOrder(req, res) {
+        
+        var productsList = req.body.productsList;
+        if(productsList != null && productsList.length > 0) {
+
+            // Contitua aqui
+        }
+    }
+
 }
 
 module.exports = StoreController;

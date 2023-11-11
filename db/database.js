@@ -2,26 +2,26 @@ var mysql = require('mysql2');
 
 class Database {
 
-    #conexao;
+    #connect;
 
-    get conexao() { return this.#conexao;} 
-    set conexao(conexao) { this.#conexao = conexao; }
+    get connect() { return this.#connect;} 
+    set connect(connect) { this.#connect = connect; }
 
     constructor() {
 
-        this.#conexao = mysql.createPool({
-            host: '132.226.245.178', //endereço do nosso banco de dados na nuvem
-            database: 'PFS1_10442221580', //a database de cada um de vocês possui a nomenclatura PFS1_(RA)
-            user: '10442221580', // usuario e senha de cada um de vocês é o RA
+        this.#connect = mysql.createPool({
+            host: '132.226.245.178',
+            database: 'PFS1_10442221580',
+            user: '10442221580',
             password: '10442221580',
         });
         
     }
 
-    ExecutaComando(sql, valores) {
-        var cnn = this.#conexao;
+    QueryCommand(sql, values) {
+        var cnn = this.#connect;
         return new Promise(function(res, rej) {
-            cnn.query(sql, valores, function (error, results, fields) {
+            cnn.query(sql, values, function (error, results, fields) {
                 if (error) 
                     rej(error);
                 else 
@@ -30,10 +30,10 @@ class Database {
         })
     }
     
-    ExecutaComandoNonQuery(sql, valores) {
-        var cnn = this.#conexao;
+    NonQueryCommand(sql, values) {
+        var cnn = this.#connect;
         return new Promise(function(res, rej) {
-            cnn.query(sql, valores, function (error, results, fields) {
+            cnn.query(sql, values, function (error, results, fields) {
                 if (error) 
                     rej(error);
                 else 
@@ -42,10 +42,10 @@ class Database {
         })
     }
 
-    ExecutaComandoLastInserted(sql, valores) {
-        var cnn = this.#conexao;
+    LastInsertedCommand(sql, values) {
+        var cnn = this.#connect;
         return new Promise(function(res, rej) {
-            cnn.query(sql, valores, function (error, results, fields) {
+            cnn.query(sql, values, function (error, results, fields) {
                 if (error) 
                     rej(error);
                 else 

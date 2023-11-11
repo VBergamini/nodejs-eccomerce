@@ -1,6 +1,6 @@
 const Database = require('../db/database');
 const ProductsModel = require('./productsModel');
-const conexao = new Database();
+const connect = new Database();
 
 class CategoriesModel {
 
@@ -25,7 +25,7 @@ class CategoriesModel {
     async listCategories() {
 
         var sql = 'SELECT * FROM tb_categories ORDER BY cat_name';
-        var rows = await conexao.ExecutaComando(sql);
+        var rows = await connect.QueryCommand(sql);
         var categoryList = [];
 
         if (rows.length > 0) {
@@ -63,7 +63,7 @@ class CategoriesModel {
             let sql = 'INSERT INTO tb_categories (cat_name, cat_image) VALUES (?, ?)';
             let values = [this.#categoryName, this.#categoryImage];
 
-            return await conexao.ExecutaComandoNonQuery(sql, values);
+            return await connect.NonQueryCommand(sql, values);
 
         }
         else {
@@ -83,7 +83,7 @@ class CategoriesModel {
 
             }
 
-            return await conexao.ExecutaComandoNonQuery(sql, values) > 0;
+            return await connect.NonQueryCommand(sql, values) > 0;
 
         }
     }
@@ -93,7 +93,7 @@ class CategoriesModel {
         var sql = 'SELECT * FROM tb_categories WHERE cat_id = ?';
         var values = [id];
 
-        var rows = await conexao.ExecutaComando(sql, values);
+        var rows = await connect.QueryCommand(sql, values);
         var category = null;
 
         if (rows.length > 0) {
@@ -130,7 +130,7 @@ class CategoriesModel {
         var sql = 'SELECT * FROM tb_products WHERE cat_id = ?';
         var values = [catId];
 
-        var rows = await conexao.ExecutaComando(sql, values);
+        var rows = await connect.QueryCommand(sql, values);
         
         if(rows.length > 0) {
 
@@ -155,7 +155,7 @@ class CategoriesModel {
         var sql = 'DELETE FROM tb_categories WHERE cat_id = ?';
         var values = [id];
 
-        var  result = conexao.ExecutaComandoNonQuery(sql, values);
+        var  result = connect.NonQueryCommand(sql, values);
 
         return result;
         
@@ -166,7 +166,7 @@ class CategoriesModel {
         var sql = 'SELECT p.prd_id FROM tb_products p INNER JOIN tb_categories c ON p.cat_id = c.cat_id WHERE p.cat_id = ?';
         var values = [catId];
 
-        return await conexao.ExecutaComando(sql, values) == 0;
+        return await connect.QueryCommand(sql, values) == 0;
 
     }
 

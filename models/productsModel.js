@@ -1,5 +1,5 @@
 const Database = require('../db/database');
-const conexao = new Database();
+const connect = new Database();
 
 class ProductsModel {
 
@@ -46,7 +46,7 @@ class ProductsModel {
 
         var sql = "DELETE FROM tb_products WHERE prd_id = ?";
         var values = [code];
-        var result = await conexao.ExecutaComandoNonQuery(sql, values);
+        var result = await connect.NonQueryCommand(sql, values);
 
         return result;
 
@@ -60,7 +60,7 @@ class ProductsModel {
             let sql = "INSERT INTO tb_products (prd_cod, prd_name, prd_quantity, cat_id, brand_id, prd_price, prd_image) VALUES (?, ?, ?, ?, ?, ?, ?)";
             let values = [this.#productCode, this.#productName, this.#productQuantity, this.#categoryId, this.#brandId, this.#productPrice, this.#productImage];
 
-            return await conexao.ExecutaComandoNonQuery(sql, values);
+            return await connect.NonQueryCommand(sql, values);
 
         }
         else {
@@ -82,7 +82,7 @@ class ProductsModel {
     
             }
 
-            return await conexao.ExecutaComandoNonQuery(sql, values) > 0;
+            return await connect.NonQueryCommand(sql, values) > 0;
 
         }
 
@@ -92,7 +92,7 @@ class ProductsModel {
 
         var sql = 'SELECT * FROM tb_products WHERE prd_id = ?';
         var values = [id];
-        var rows = await conexao.ExecutaComando(sql, values);
+        var rows = await connect.QueryCommand(sql, values);
         var product = '';
 
         if (rows.length > 0) {
@@ -124,7 +124,7 @@ class ProductsModel {
     async listProducts() {
 
         var sql = 'SELECT * FROM tb_products p INNER JOIN tb_categories c ON p.cat_id = c.cat_id INNER JOIN tb_brands b ON p.brand_id = b.brand_id';
-        var rows = await conexao.ExecutaComando(sql);
+        var rows = await connect.QueryCommand(sql);
         var listProducts = [];
 
         if (rows.length > 0) {
@@ -195,7 +195,7 @@ class ProductsModel {
 
         var listProducts = [];
 
-        var rows = await conexao.ExecutaComando(sql, values);
+        var rows = await connect.QueryCommand(sql, values);
 
         if(rows.length > 0) {
             

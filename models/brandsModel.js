@@ -1,7 +1,7 @@
 const Database = require('../db/database');
 const ProductsModel = require('./productsModel');
 
-const conexao = new Database();
+const connect = new Database();
 
 class BrandsModel {
 
@@ -26,7 +26,7 @@ class BrandsModel {
     async listBrands() {
 
         var sql = 'SELECT * FROM tb_brands ORDER BY brand_name';
-        var rows = await conexao.ExecutaComando(sql);
+        var rows = await connect.QueryCommand(sql);
         var brandList = [];
 
         if (rows.length > 0) {
@@ -64,7 +64,7 @@ class BrandsModel {
             let sql = 'INSERT INTO tb_brands (brand_name, brand_image) VALUES (?, ?)';
             let values = [this.#brandName, this.#brandImage];
 
-            return await conexao.ExecutaComandoNonQuery(sql, values);
+            return await connect.NonQueryCommand(sql, values);
 
         }
         else {
@@ -88,7 +88,7 @@ class BrandsModel {
 
             }
 
-            return await conexao.ExecutaComandoNonQuery(sql, values) > 0;
+            return await connect.NonQueryCommand(sql, values) > 0;
 
         }
 
@@ -99,7 +99,7 @@ class BrandsModel {
         var sql = 'SELECT * FROM tb_brands WHERE brand_id = ?';
         var values = [brandId];
 
-        var rows = await conexao.ExecutaComando(sql, values);
+        var rows = await connect.QueryCommand(sql, values);
         var brand = null;
 
         if(rows.length > 0) {
@@ -135,7 +135,7 @@ class BrandsModel {
         var sql = 'SELECT * FROM tb_products WHERE brand_id = ?';
         var values = [brandId];
 
-        var rows = await conexao.ExecutaComando(sql, values);
+        var rows = await connect.QueryCommand(sql, values);
         
         if (rows.length > 0) {
 
@@ -160,7 +160,7 @@ class BrandsModel {
         var sql = 'DELETE FROM tb_brands WHERE brand_id = ?';
         var values = [brandId];
 
-        var result = conexao.ExecutaComandoNonQuery(sql, values);
+        var result = connect.NonQueryCommand(sql, values);
 
         return result;
 
@@ -171,7 +171,7 @@ class BrandsModel {
         var sql = 'SELECT p.prd_id FROM tb_products p INNER JOIN tb_brands b ON p.brand_id = b.brand_id WHERE p.brand_id = ?';
         var values = [brandId];
 
-        return await conexao.ExecutaComando(sql, values) == 0;
+        return await connect.QueryCommand(sql, values) == 0;
 
     }
 

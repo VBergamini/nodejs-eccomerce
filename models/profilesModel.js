@@ -1,6 +1,6 @@
 const Database = require('../db/database');
 
-const conexao = new Database();
+const connect = new Database();
 
 class ProfilesModel {
 
@@ -20,7 +20,7 @@ class ProfilesModel {
     async recoveryProfile() {
 
         var sql = "SELECT * FROM tb_profiles";
-        var rows = await conexao.ExecutaComando(sql);
+        var rows = await connect.QueryCommand(sql);
         var listProfile = []
 
         if (rows.length > 0) {
