@@ -224,6 +224,16 @@ class ProductsModel {
         return listProducts;
 
     }
+
+    async stockUpdate(qtty, id) {
+
+        var sql = 'UPDATE tb_products SET prd_quantity = ? WHERE prd_id = ?';
+        var values = [qtty, id];
+        var result = await connect.NonQueryCommand(sql, values);
+
+        return result;
+        
+    } 
     
 }
 

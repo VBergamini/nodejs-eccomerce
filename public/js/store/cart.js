@@ -100,8 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 html += `<tr>
                             <td><img src="${product.image}" width="100"</td>
                             <td>${product.name}</td>
-                            <td>$${product.price}</td>
-                            <td>$${product.value}</td>
+                            <td>$ ${product.price}</td>
+                            <td>$ ${product.value}</td>
                             <td>
                                 <div class="input-group" style="display:flex">
                                     <button data-id="${product.id}" class="btn btn-default decrement"><i class="fas fa-minus"></i></button>
@@ -259,6 +259,51 @@ document.addEventListener('DOMContentLoaded', function() {
         this.parentElement.parentElement.remove();
         document.querySelector('#countProducts').innerHTML = productsList.length;
         totalUpdate();
+
+    }
+
+    var btnOrder = document.querySelector('#btnOrder');
+    btnOrder.addEventListener('click', makeOrder);
+
+    function makeOrder() {
+
+        fetch('/make-order', {
+
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({productsList: productsList})
+        })
+        .then(r => {
+
+            return r.json();
+
+        })
+        .then(r => {
+
+            if(r.ok) {
+
+                alert(r.msg);
+                productsList = [];
+                localStorage.removeItem('cart');
+                document.querySelector('[data-bs-dismiss]').click();
+                document.querySelector('#countProducts').innerHTML = 0;
+
+            }
+            else {
+                
+                let outStockMsg = document.querySelector('.outStockMsg');
+                outStockMsg.innerHTML = r.msg + '<br>';
+                r.outOfStock.forEach(function(value, index) {
+
+                    outStockMsg.innerHTML += value.name + ' - Stock: ' + value.qtty + ' units<br>'
+
+                })
+
+            }
+
+        })
 
     }
 

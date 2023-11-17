@@ -10,6 +10,7 @@ const AdminProductsRoute = require('./routes/admin/adminProductsRoute');
 const AdminBrandsRoute = require('./routes/admin/adminBrandsRoute');
 const AdminCategoriesRoute = require('./routes/admin/adminCategoriesRoute');
 const StoreRoute = require('./routes/store/storeRoute');
+const AdminOrderRoute = require('./routes/admin/adminOrdersRoute');
 
 const app = express();
 const auth = new Authentication();
@@ -61,6 +62,9 @@ app.use("/brands", adminBrands.router);
 
 var adminCategories = new AdminCategoriesRoute();
 app.use("/categories", adminCategories.router);
+
+var adminOrders = new AdminOrderRoute();
+app.use('/orders', adminOrders.router);
 
 global.PROJECT_ROOT = __dirname;
 global.PATH_TO_PRODUCTS_IMAGE = '/img/admin/products/';

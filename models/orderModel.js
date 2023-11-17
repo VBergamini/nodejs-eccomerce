@@ -17,7 +17,7 @@ class OrderModel {
     async save() {
         
         var sql = 'INSERT INTO tb_order (ord_date) values(curdate())';
-        let orderId = await connect.LastInsertedCommand(sql);
+        var orderId = await connect.LastInsertedCommand(sql);
 
         this.#orderId = orderId;
     }

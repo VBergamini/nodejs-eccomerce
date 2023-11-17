@@ -1,11 +1,12 @@
 const Database = require('../db/database');
 const connect = new Database();
 
-class OrderItemModel {
+class OrderItemsModel {
 
     #orderItemId;
     #orderId;
     #productId;
+    #productName;
     #productItemQuantity;
     #productItemPrice;
 
@@ -14,25 +15,50 @@ class OrderItemModel {
     get productId() {return this.#productId} set productId(productId) {this.#productId = productId}
     get productItemQuantity() {return this.#productItemQuantity} set productItemQuantity(productItemQuantity) {this.#productItemQuantity = productItemQuantity}
     get productItemPrice() {return this.#productItemPrice} set productItemPrice(productItemPrice) {this.#productItemPrice = productItemPrice}
+    get productName() {return this.#productName} set productName(productName) {this.#productName = productName}
 
-    constructor(orderItemId, orderId, productId, productItemQuantity, productItemPrice) {
+    constructor(orderItemId, orderId, productId, productItemQuantity, productItemPrice, productName) {
         this.#orderItemId = orderItemId;
         this.#orderId = orderId;
         this.#productId = productId;
         this.#productItemQuantity = productItemQuantity;
         this.#productItemPrice = productItemPrice;
+        this.#productName = productName;
+    }
+
+    async list() {
+
+        var sql = `SELECT * FROM tb_order o
+        INNER JOIN tb_orderItems i ON o.ord_id = i.ord_id
+        INNER JOIN tb_products p ON i.prd_id = p.prd_id
+        ORDER BY o.ord_id`;
+
+        var rows = await connect.QueryCommand(sql);
+        var list = [];
+
+        for(let i = 0; i < rows.length; i++) {
+
+            let item = rows[i];
+            let orderItem = new OrderItemsModel(item['oit_id'], item['ord_id'], item['prd_id'], item['oit_quantity'], item['oit_price'], item['prd_name']);
+
+            list.push(orderItem);
+
+        }
+
+        return list;
+
     }
 
     async save() {
 
-        var sql = 'ISERT INTO tb_orderItems (ord_id, prd_id, oit_quantity, oit_price) VALUES (?,?,?,?)';
+        var sql = 'INSERT INTO tb_orderItems (ord_id, prd_id, oit_quantity, oit_price) VALUES (?,?,?,?)';
         var values = [this.#orderId, this.#productId, this.#productItemQuantity, this.#productItemPrice];
 
         var result = await connect.NonQueryCommand(sql, values);
 
-        return values;
+        return result;
     }
 
 }
 
-module.exports = OrderItemModel;
+module.exports = OrderItemsModel;

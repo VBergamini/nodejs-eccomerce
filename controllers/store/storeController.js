@@ -2,6 +2,8 @@ const CategoriesModel = require("../../models/categoriesModel");
 const BrandsModel = require("../../models/brandsModel");
 const ProductsModel = require("../../models/productsModel");
 const UsersModel = require("../../models/usersModel");
+const OrderModel = require("../../models/orderModel");
+const OrderItemsModel = require("../../models/orderItemsModel");
 
 class StoreController {
 
@@ -188,10 +190,57 @@ class StoreController {
         var productsList = req.body.productsList;
         if(productsList != null && productsList.length > 0) {
 
-            // Contitua aqui
+            let product = new ProductsModel();
+            let stock = true;
+            let outOfStock = [];
+            for(let i = 0; i < productsList.length; i++) {
+
+                product = await product.findProduct(productsList[i].id)
+
+                if(product.productQuantity < productsList[i].quantity) {
+
+                    let outProduct = {
+                        name: product.productName,
+                        qtty: product.productQuantity
+                    }
+
+                    outOfStock.push(outProduct);
+                    stock = false;
+
+                }
+            }
+
+            if(stock == true) {
+
+                let order = new OrderModel();
+                await order.save();
+
+                for(let i = 0; i < productsList.length; i++) {
+
+                    let orderItem = new OrderItemsModel(0, order.orderId, productsList[i].id, productsList[i].quantity, productsList[i].price);
+                    await orderItem.save();
+
+                    product = await product.findProduct(productsList[i].id)
+                    product.stockUpdate((product.productQuantity -= productsList[i].quantity), product.productId);
+
+                }
+        
+                res.send({msg: "Order registered successfully!", ok: true});
+
+            }
+            else {
+        
+                res.send({ ok: false, msg: "Not enough stock for the products: ", outOfStock: outOfStock});
+
+            }
+
+        }
+        else {
+
+            res.send({msg: "No products added to cart!", ok: false});
+
         }
     }
-
 }
 
 module.exports = StoreController;

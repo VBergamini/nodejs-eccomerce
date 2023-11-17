@@ -1,0 +1,9 @@
+@media print {
+    .logoPrint{
+        display:block;
+    }
+}
+
+.exportButtons, .sCriteria, .sInput, .h1Print {
+    display: none;
+  }
