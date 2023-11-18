@@ -20,7 +20,7 @@ class StoreRoute {
         this.#router.get('/store/categories', ctrl.categoriesView);
         this.#router.get('/store/categories/:id', ctrl.categoriesFilterView);
         this.#router.get('/store/brands', ctrl.brandsView);
-        this.#router.get('/brands/:id', ctrl.brandsFilterView);
+        this.#router.get('/store/brands/:id', ctrl.brandsFilterView);
         this.#router.get('/store/products/:id', ctrl.singleProductView);
         this.#router.get('/store/search', ctrl.searchView);
         this.#router.get('/store/cart/add/:id', ctrl.addToCart);

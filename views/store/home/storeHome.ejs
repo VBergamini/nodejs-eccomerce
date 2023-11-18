@@ -1,36 +1,22 @@
 
 <div class="container padding-small">
-
   <% if(url.includes('categories')) { %>
-    
      <%- include(global.PROJECT_ROOT+'/views/store/categories/storeCategories.ejs') %>
-
   <% } else if(url.includes('brands')) { %>
-    
      <%- include(global.PROJECT_ROOT+'/views/store/brands/storeBrands.ejs') %>
-  
   <% } else if(url.includes('search')) { %>
-    
       <%- include(global.PROJECT_ROOT+'/views/store/home/storeSearch.ejs') %>
-
   <% } else if(url.includes('products')) { %>
-
       <%- include(global.PROJECT_ROOT+'/views/store/products/singleProduct.ejs') %>
-
   <% } else { %>
-    
      <%- include(global.PROJECT_ROOT+'/views/store/products/storeProducts.ejs') %>
-    
   <% } %>
-        
   <aside class="col-md-3">
     <div class="sidebar">
       <div class="widgets widget-menu">
-
         <div class="widgets g-3">
           <h5 class="widget-title mb-2">Search</h5>
           <div class="widget-search-bar">
-
             <form role="search" method="get" class="search-form" action="/store/search">
               <input type="search" id="search-form" class="form-control mb-0" placeholder="Type and press enter" value="" name="s">
               <button type="submit" class="search-submit pb-2 mb-0 pt-3 mt-4"><a href="/store/search"><i class="icon icon-search" style="font-size: 2rem; color:rgb(150, 150, 150)"></i></a></button>
@@ -45,10 +31,8 @@
                 </div>
               </div>
             </form>
-            
           </div> 
         </div>
-
         <div class="widgets">
           <h5 class="widget-title mb-2 mt-4">Brands</h5>
           <ul class="product-tags sidebar-list list-unstyled">
@@ -59,7 +43,6 @@
             <% }) %>
           </ul>
         </div>
-
         <div class="widgets">
           <h5 class="widget-title mb-2 mt-4">Something &lt To Do &gt</h5>
         </div>

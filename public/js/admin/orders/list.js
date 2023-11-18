@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#exportPDF').addEventListener('click', exportPDF);
 
     function exportPDF() {
-
         var title = document.title;
         document.title = 'PFS1 -' + ' Report by ' + fileName + ' on ' + date;
         window.print();

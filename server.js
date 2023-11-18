@@ -58,10 +58,10 @@ var adminProducts = new AdminProductsRoute();
 app.use('/products', adminProducts.router);
 
 var adminBrands = new AdminBrandsRoute();
-app.use("/brands", adminBrands.router);
+app.use('/brands', adminBrands.router);
 
 var adminCategories = new AdminCategoriesRoute();
-app.use("/categories", adminCategories.router);
+app.use('/categories', adminCategories.router);
 
 var adminOrders = new AdminOrderRoute();
 app.use('/orders', adminOrders.router);

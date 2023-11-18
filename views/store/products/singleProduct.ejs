@@ -1,198 +1,150 @@
-
-		<section class="section mt-5">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- Product main img -->
-					<div class="col-md-5 col-md-push-2">
-						<div id="product-main-img">
-							<div class="product-preview">
-								<img src="<%= product.productImage %>" alt="<%= product.productName %>">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product03.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product06.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product08.png" alt="">
-							</div>
-						</div>
+<section class="section mt-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-md-push-2">
+				<div id="product-main-img">
+					<div class="product-preview">
+						<img src="<%= product.productImage %>" alt="<%= product.productName %>">
 					</div>
-					<!-- /Product main img -->
-
-					<!-- Product thumb imgs -->
-					<div class="col-md-2  col-md-pull-5">
-						<div id="product-imgs">
-							<div class="product-preview">
-								<img src="./img/product01.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product03.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product06.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product08.png" alt="">
-							</div>
-						</div>
+					<div class="product-preview">
+						<img src="./img/product03.png" alt="">
 					</div>
-					<!-- /Product thumb imgs -->
-
-					<!-- Product details -->
-					<div class="col-md-5">
-						<div class="product-details">
-							<h2 class="product-name"><%= product.productName %></h2>
-							<p>Product Short descripion &lt To Do &gt.</p>
-							<div>
-								<div class="product-rating">
-									<i class="icon-star-full"></i>
-									<i class="icon-star-full"></i>
-									<i class="icon-star-full"></i>
-									<i class="icon-star-full"></i>
-									<i class="icon-star-half"></i>
-								</div>
-								<a class="review-link" href="#">10 Review(s) | Add your review &lt To Do &gt</a>
-							</div>
-							<div>
-								<h3 class="product-price mb-0">$<%= product.productPrice %> <del class="product-old-price">$99.90</del></h3>
-								<span class="product-available mt-0">Stock: <%= product.productQuantity %> units</span>
-							</div>
-							<div class="product-options mt-5">
-								<label for="size" class="fw-light">Size
-									<select class="input-select w-100" id="size">
-										<option value="0">-- Select --</option>
-										<option value="1">20ml</option>
-										<option value="2">50ml</option>
-									</select>
-								</label>
-								<label for="color" class="fw-light">Color
-									<select class="input-select w-100" id="color">
-										<option value="0">-- Select --</option>
-										<option value="1">Pink</option>
-										<option value="2">Blue</option>
-									</select>
-								</label>
-							</div>
-
-							<div class="add-to-cart">
-								<input type="number" class="w-25" placeholder="qtty">
-								<button class="add-to-cart-btn addToCart"><i class="icon icon-shopping-cart"></i> add to cart</button>
-								</label>
-							</div>
-
-							<ul class="product-links">
-								<li>Category:
-									<a href="/store/categories/<%= product.categoryId %>"><%= category.categoryName %></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon-heart"></i> add to wishlist</a>
-									&lt To Do &gt
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-exchange"></i> add to compare</a>
-									&lt To Do &gt
-								</li>
-								<li>Share:
-									<a href=""><i class="icon-facebook"></i></a>
-									<a href=""><i class="icon-twitter"></i></a>
-									<a href="#"><i class="icon-mail"></i></a>
-									&lt To Do &gt
-								</li>
-							</ul>
-						</div>
+					<div class="product-preview">
+						<img src="./img/product06.png" alt="">
 					</div>
-					<!-- /Product details -->
-
-					<nav>
-						<div class="nav nav-tabs" id="nav-tab" role="tablist">
-						  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
-						  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">More details</button>
-						  <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Reviews</button>
-						</div>
-					  </nav>
-					  <div class="tab-content" id="nav-tabContent" style="min-height:200px; border:1px solid #eee">
-						<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Description &lt To Do &gt</div>
-						<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">More details &lt To Do &gt</div>
-						<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Reviews &lt To Do &gt</div>
-					  </div>
+					<div class="product-preview">
+						<img src="./img/product08.png" alt="">
+					</div>
 				</div>
-				<!-- /row -->
 			</div>
-			<!-- /container -->
-		</section>
-		<!-- /SECTION -->
-
-		<!-- Section -->
-		<section class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-
-					<div class="col-md-12">
-						<div class="section-title text-center">
-							<h3 class="title">Related Products</h3>
-							<p>&lt To do &gt</p>
+			<div class="col-md-2  col-md-pull-5">
+				<div id="product-imgs">
+					<div class="product-preview">
+						<img src="./img/product01.png" alt="">
+					</div>
+					<div class="product-preview">
+						<img src="./img/product03.png" alt="">
+					</div>
+					<div class="product-preview">
+						<img src="./img/product06.png" alt="">
+					</div>
+					<div class="product-preview">
+						<img src="./img/product08.png" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="product-details">
+					<h2 class="product-name"><%= product.productName %></h2>
+					<p>Product Short descripion &lt To Do &gt.</p>
+					<div class="product-rating">
+						<i class="icon-star-full"></i>
+						<i class="icon-star-full"></i>
+						<i class="icon-star-full"></i>
+						<i class="icon-star-full"></i>
+						<i class="icon-star-half"></i>
+					</div>
+					<a class="review-link" href="#">10 Review(s) | Add your review &lt To Do &gt</a>
+				</div>
+				<div>
+					<h3 class="product-price mb-0">$<%= product.productPrice %> <del class="product-old-price">$99.90</del></h3>
+					<span class="product-available mt-0">Stock: <%= product.productQuantity %> units</span>
+				</div>
+				<div class="product-options mt-5">
+					<label for="size" class="fw-light">Size
+						<select class="input-select w-100" id="size">
+							<option value="0">-- Select --</option>
+							<option value="1">20ml</option>
+							<option value="2">50ml</option>
+						</select>
+					</label>
+					<label for="color" class="fw-light">Color
+						<select class="input-select w-100" id="color">
+							<option value="0">-- Select --</option>
+							<option value="1">Pink</option>
+							<option value="2">Blue</option>
+						</select>
+					</label>
+				</div>
+				<div class="add-to-cart">
+					<input type="number" class="w-25" placeholder="qtty">
+					<button class="add-to-cart-btn addToCart"><i class="icon icon-shopping-cart"></i> add to cart</button>
+				</div>
+				<ul class="product-links">
+					<li>Category:
+						<a href="/store/categories/<%= product.categoryId %>"><%= category.categoryName %></a>
+					</li>
+					<li>
+						<a href="#"><i class="icon-heart"></i> add to wishlist</a>
+						&lt To Do &gt
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-exchange"></i> add to compare</a>
+						&lt To Do &gt
+					</li>
+					<li>Share:
+						<a href=""><i class="icon-facebook"></i></a>
+						<a href=""><i class="icon-twitter"></i></a>
+						<a href="#"><i class="icon-mail"></i></a>
+						&lt To Do &gt
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title text-center mt-5">
+						<h5 class="title">Related Products</h5>
+						<p>&lt To do &gt</p>
+					</div>
+				</div>
+				<div class="col-md-12 d-flex">
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<img src="./img/product03.png" alt="">
+							</div>
+							<div class="product-body">
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-o"></i>
+								</div>
+							</div>
+							<div class="add-to-cart">
+								<button class="add-to-cart-btn"><i class="icon icon-shopping-cart"></i> add to cart</button>
+							</div>
 						</div>
 					</div>
-
-					<div class="col-md-12 d-flex">
-						<!-- product -->
-						<div class="col-md-3 col-xs-6">
-							<div class="product">
-								<div class="product-img">
-									<img src="./img/product01.png" alt="">
-								</div>
-								<div class="product-body">
-									<h3 class="product-name"><a href="#">product name goes here</a></h3>
-									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									<div class="product-rating">
-									</div>
-								</div>
-								<div class="add-to-cart">
-									<button class="add-to-cart-btn"><i class="icon icon-shopping-cart"></i> add to cart</button>
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<img src="./img/product02.png" alt="">
+							</div>
+							<div class="product-body">
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
 								</div>
 							</div>
-						</div>
-						<!-- /product -->
-
-						<!-- product -->
-						<div class="col-md-3 col-xs-6">
-							<div class="product">
-								<div class="product-img">
-									<img src="./img/product02.png" alt="">
-								</div>
-								<div class="product-body">
-									<h3 class="product-name"><a href="#">product name goes here</a></h3>
-									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									<div class="product-rating">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-								</div>
-								<div class="add-to-cart">
-									<button class="add-to-cart-btn"><i class="icon icon-shopping-cart"></i> add to cart</button>
-								</div>
+							<div class="add-to-cart">
+								<button class="add-to-cart-btn"><i class="icon icon-shopping-cart"></i> add to cart</button>
 							</div>
 						</div>
-						<!-- /product -->
-
-						<div class="clearfix visible-sm visible-xs"></div>
-
-						<!-- product -->
+					</div>
+					<div class="clearfix visible-sm visible-xs"></div>
 						<div class="col-md-3 col-xs-6">
 							<div class="product">
 								<div class="product-img">
@@ -214,18 +166,20 @@
 								</div>
 							</div>
 						</div>
-						<!-- /product -->
-
-						<!-- product -->
 						<div class="col-md-3 col-xs-6">
 							<div class="product">
 								<div class="product-img">
-									<img src="./img/product04.png" alt="">
+									<img src="./img/product03.png" alt="">
 								</div>
 								<div class="product-body">
 									<h3 class="product-name"><a href="#">product name goes here</a></h3>
 									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 									<div class="product-rating">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star-o"></i>
 									</div>
 								</div>
 								<div class="add-to-cart">
@@ -233,11 +187,7 @@
 								</div>
 							</div>
 						</div>
-						<!-- /product -->
-				</div>
-
-				</div>
-				<!-- /row -->
 			</div>
-			<!-- /container -->
-		</section>
+		</div>
+	</section>
+</section>

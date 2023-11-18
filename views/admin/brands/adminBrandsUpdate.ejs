@@ -1,27 +1,24 @@
-
+<div>
+  <h1>Update Brand</h1>
+</div>
+<div>
+  <form>
+    <input type="hidden" value="<%= brand.brandId %>" id="inputId" />
+    <div class="form-group">
+      <label for="inputName">Brand Name</label>
+      <input type="text" class="form-control" id="inputName" value="<%= brand.brandName %>"/>
+    </div>
+    <div class="form-group">
+      <label for="inputImage">Brand Image</label>
+      <input class="form-control" type="file" id="inputImage" />
+    </div>
+    <div style="padding:10px;">
+      <img alt="<%= brand.brandName %>" src="<%= brand.brandImage %>" width="200" id="imagePreview">
+    </div>
+    <div>
+      <button class="btn btn-primary" type="button" id="btnUpdate">Update</button>
+      <a href="/brands" class="btn btn-default">Back</a>
+    </div>
+  </form>
+</div>
 <script src="/js/admin/brands/update.js"></script>
-<div>
-    <h1>Update Brand</h1>
-</div>
-
-<div>
-    <form>
-      <input type="hidden" value="<%= brand.brandId %>" id="inputId" />
-        <div class="form-group">
-            <label for="inputName">Brand Name</label>
-            <input type="text" class="form-control" id="inputName" value="<%= brand.brandName %>"/>
-          </div>
-
-        <div class="form-group">
-          <label for="inputImage">Brand Image</label>
-          <input class="form-control" type="file" id="inputImage" />
-        </div>
-        <div style="padding:10px;">
-          <img alt="<%= brand.brandName %>" src="<%= brand.brandImage %>" width="200" id="imagePreview">
-        </div>
-        <div>
-            <button class="btn btn-primary" type="button" id="btnUpdate">Update</button>
-            <a href="/brands" class="btn btn-default">Back</a>
-        </div>
-      </form>
-</div>

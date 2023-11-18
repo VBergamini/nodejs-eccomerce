@@ -11,8 +11,6 @@ class adminBrandsRoute {
 
     constructor() {
 
-        var auth = new Authentication();
-
         this.#router = express.Router();
         var ctrl = new AdminBrandsController();
 

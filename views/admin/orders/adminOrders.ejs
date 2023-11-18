@@ -1,6 +1,3 @@
-<script src="js/admin/orders/list.js"></script>
-<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
-
 <div class="logoPrint">
     <img src="img/store/logo/logo.png" width="200">
 </div>
@@ -28,7 +25,6 @@
             </div>
         </div>
     </div>
-
     <table id="ordersTable" class="table table-striped">
         <thead>
             <th>Order</th>
@@ -39,14 +35,16 @@
         </thead>
         <tbody>
             <% list.forEach(function(value, index) { %>
-                <tr>
-                    <td><%= value.orderId %></td>
-                    <td><%= value.productName %></td>
-                    <td><%= value.productItemQuantity %></td>
-                    <td>$ <%= parseFloat(value.productItemPrice).toFixed(2) %></td>
-                    <td>$ <%= (value.productItemPrice * value.productItemQuantity).toFixed(2) %></td>
-                </tr>
+            <tr>
+                <td><%= value.orderId %></td>
+                <td><%= value.productName %></td>
+                <td><%= value.productItemQuantity %></td>
+                <td>$ <%= parseFloat(value.productItemPrice).toFixed(2) %></td>
+                <td>$ <%= (value.productItemPrice * value.productItemQuantity).toFixed(2) %></td>
+            </tr>
             <% }) %>
         </tbody>
     </table>
 </div>
+<script src="js/admin/orders/list.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>

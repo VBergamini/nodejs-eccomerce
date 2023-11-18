@@ -1,9 +1,6 @@
-
-<script src="/js/admin/users/delete.js"></script>
 <div>
     <h1>All Users</h1>
     <a class="btn btn-primary" href="/users/create">Create User</a>
-
     <table style="margin-top:10px" class="table table-stripped">
         <thead>
             <th>Id</th>
@@ -15,26 +12,21 @@
         </thead>
         <tbody>
             <% listUsers.map(function(value, index) { %>
-
-                <tr>
-                    <td><%= value.userId %></td>
-                    <td><%= value.userName %></td>
-                    <td><%= value.userEmail %></td>
-                    <td><%= value.profileDescription %></td>
-                    <td><%= value.userActive %></td>
-                    <td>
-                        <div>
-                            <a href="/users/update/<%= value.userId %>" class="btn btn-primary">
-                                <i class="fas fa-pen"></i>
-                            </a>
-                            <button data-id="<%= value.userId %>" class="btn btn-danger btnDelete">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-
+            <tr>
+                <td><%= value.userId %></td>
+                <td><%= value.userName %></td>
+                <td><%= value.userEmail %></td>
+                <td><%= value.profileDescription %></td>
+                <td><%= value.userActive %></td>
+                <td>
+                    <div>
+                        <a href="/users/update/<%= value.userId %>" class="btn btn-primary"><i class="fas fa-pen"></i></a>
+                        <button data-id="<%= value.userId %>" class="btn btn-danger btnDelete"><i class="fas fa-trash"></i></button>
+                    </div>
+                </td>
+            </tr>
             <% }) %>
         </tbody>
     </table>
 </div>
+<script src="/js/admin/users/delete.js"></script>

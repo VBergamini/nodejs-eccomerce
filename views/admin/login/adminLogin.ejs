@@ -3,70 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" type="text/css" href="/css/essentials/fontawesome/all.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/admin/adminlte.min.css">
   <title>Login</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/css/essentials/fontawesome/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/css/admin/adminlte.min.css">
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
-  <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="#" class="h1"><b>PFS</b>I</a>
-    <div class="card-body">
-      <p>
-        <svg role="button" class="text-blue" onclick="email.value='admin@admin.com'; password.value='123'" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-mouse2-fill" viewBox="0 0 16 16">
-          <path d="M7.5.026C4.958.286 3 2.515 3 5.188V5.5h4.5V.026zm1 0V5.5H13v-.312C13 2.515 11.042.286 8.5.026zM13 6.5H3v4.313C3 13.658 5.22 16 8 16s5-2.342 5-5.188V6.5z"/>
-        </svg>
-      </p>
-      <p class="login-box-msg">Click on Mouse to copy</p>
-      <div id="alertMsg"></div>
-      <div>
-        <div class="input-group mb-3">
-          <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+  <div class="login-box">
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+        <a href="#" class="h1"><b>PFS</b>I</a>
+        <div class="card-body">
+          <p>
+            <svg role="button" class="text-blue" onclick="email.value='admin@admin.com'; password.value='123'" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-mouse2-fill" viewBox="0 0 16 16">
+              <path d="M7.5.026C4.958.286 3 2.515 3 5.188V5.5h4.5V.026zm1 0V5.5H13v-.312C13 2.515 11.042.286 8.5.026zM13 6.5H3v4.313C3 13.658 5.22 16 8 16s5-2.342 5-5.188V6.5z"/>
+            </svg>
+          </p>
+          <p class="login-box-msg">Click on Mouse to copy</p>
+          <div id="alertMsg"></div>
+          <div>
+          <div class="input-group mb-3">
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <!-- /.col -->
+        <div class="row d-flex justify-content-end">
           <div class="col-4">
             <button type="button" id="btnLogin" class="btn btn-primary btn-block">Login</button>
           </div>
-          <!-- /.col -->
         </div>
       </div>
-
-      <!-- /.social-auth-links -->
     </div>
-    <!-- /.card-body -->
   </div>
-  <!-- /.card -->
-</div>
-<!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="/js/essentials/jquery/jquery-3.7.1.min.js"></script>
-<!-- Bootstrap 5 -->
-<script src="/js/essentials/bootstrap/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/js/essentials/adminLte/adminlte.min.js"></script>
-<!-- Login js -->
-<script src="/js/admin/Login/login.js"></script>
+  <script src="/js/essentials/jquery/jquery-3.7.1.min.js"></script>
+  <script src="/js/essentials/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="/js/essentials/adminLte/adminlte.min.js"></script>
+  <script src="/js/admin/Login/login.js"></script>
+
 </body>
 </html>
