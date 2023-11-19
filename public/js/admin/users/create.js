@@ -21,36 +21,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 active: active.checked == true ? 'Y' : 'N'
             }
 
-            fetch('/users/create', {
+            if(confirm('Are You Sure?')) {
 
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(user)
-            })
-            .then(r => {
+                fetch('/users/create', {
 
-                return r.json();
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(user)
+                })
+                .then(r => {
+    
+                    return r.json();
+    
+                })
+                .then(r => {
+    
+                    if (r.ok) {
+    
+                        document.querySelector('.userCreateMsg').innerHTML = `<span class="alert alert-success">${r.msg}</span>`;
+                        name.value = '';
+                        email.value = '';
+                        profile.value = 0;
+                        password.value = '';
+                        active.checked = false;
+                        
+                        setTimeout(function(){
 
-            })
-            .then(r => {
+                            document.querySelector('.userCreateMsg').innerHTML = '';
 
-                if (r.ok) {
-
-                    alert(r.msg);
-                    name.value = '';
-                    email.value = '';
-                    profile.value = 0;
-                    password.value = '';
-                    active.checked = false;
-
-                }
-                else {
-
-                    alert(r.msg);
-
-                }
-
-            });
+                        }, 3000);
+    
+                    }
+                    else {
+    
+                        alert(r.msg);
+    
+                    }
+    
+                });
+                
+            }
 
         }
         else {
@@ -69,16 +79,16 @@ document.addEventListener('DOMContentLoaded', function() {
         password.style['border-color'] = '';
         var errs = [];
 
-        if (name.value == '') {
+        if (name.value.trim() == '') {
             errs.push(name);
         }
-        if (email.value == '') {
+        if (email.value.trim() == '') {
             errs.push(email);
         }
-        if (profile.value == 0) {
+        if (profile.value.trim() == 0) {
             errs.push(profile);
         }
-        if (password.value == '') {
+        if (password.value.trim() == '') {
             errs.push(password);
         }
 

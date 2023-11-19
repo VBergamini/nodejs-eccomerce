@@ -6,7 +6,7 @@
     <div class="table-responsive" style="margin-top: 15px;">
         <table class="table table-striped table-hover">
             <thead>
-                <tr>
+                <tr class="align-middle text-center">
                     <th>#</th>
                     <th>Id</th>
                     <th>Name</th>
@@ -15,11 +15,11 @@
             </thead>
             <tbody>
                 <% brandList.map(function(value, index) { %>
-                <tr>
-                    <td><img width="50" src= "<%= value.brandImage %> " alt=" <%= value.brandName %>"/></td>
-                    <td><%= value.brandId %></td>
-                    <td><%= value.brandName %></td>
-                    <td>
+                <tr class="align-middle text-center">
+                    <td class="align-middle"><img width="50" src= "<%= value.brandImage %> " alt=" <%= value.brandName %>"/></td>
+                    <td class="align-middle"><%= value.brandId %></td>
+                    <td class="align-middle"><%= value.brandName %></td>
+                    <td class="align-middle">
                         <div>
                             <a href="/brands/update/<%= value.brandId %>" class="btn btn-primary"> <i class="fas fa-pen"></i></a>
                             <button data-id="<%=value.brandId %>" class="btn btn-danger btnDelete"><i class="fas fa-trash"></i></button>

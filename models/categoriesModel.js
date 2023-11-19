@@ -4,10 +4,7 @@ const connect = new Database();
 
 class CategoriesModel {
 
-    #categoryId;
-    #categoryName;
-    #categoryImage;
-    #haveImage;
+    #categoryId; #categoryName; #categoryImage; #haveImage;
 
     get categoryId() { return this.#categoryId; } set categoryId(categoryId) { this.#categoryId = categoryId; }
     get categoryName() { return this.#categoryName; } set categoryName(categoryName) { this.#categoryName = categoryName; }

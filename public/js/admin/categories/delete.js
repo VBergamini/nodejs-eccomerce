@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (confirm ('Are you sure?')) {
 
-            if (id != '') {
+            if (id != null && id != '') {
 
                 let data = { id: id };
 
@@ -35,7 +35,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     if(r.ok) {
 
-                        window.location.reload();
+                        this.parentNode.parentNode.previousElementSibling.innerHTML = `<span class="alert alert-success">${r.msg}</span>`;
+                        let that = this;
+
+                        setTimeout(function(){
+
+                            that.parentNode.parentNode.parentNode.remove();
+
+                        }, 3000);
 
                     }
                     else {

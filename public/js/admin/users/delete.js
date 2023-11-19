@@ -32,7 +32,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     if (r.ok) {
 
-                        window.location.reload();
+                        this.parentNode.parentNode.previousElementSibling.innerHTML = `<pan class="alert alert-success">${r.msg}</span>`;
+                        let that = this;
+                        
+                        setTimeout(function(){
+
+                            that.parentNode.parentNode.parentNode.remove();
+
+                        }, 3000);
 
                     }
                     else {

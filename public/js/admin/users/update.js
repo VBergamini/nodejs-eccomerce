@@ -23,33 +23,44 @@ document.addEventListener("DOMContentLoaded", function() {
                 active: active.checked == true ? "Y" : "N"
             }
 
-            fetch('/users/update', {
+            if(confirm('Are You Sure?')) {
 
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(user)
-                
-            })
-            .then(r => {
+                fetch('/users/update', {
 
-                return r.json();
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(user)
+                    
+                })
+                .then(r => {
+    
+                    return r.json();
+    
+                })
+                .then(r => {
+    
+                    if (r.ok) {
+    
+                        document.querySelector('.userUpdateMsg').innerHTML = `<span class="alert alert-success">${r.msg}</span>`;
 
-            })
-            .then(r => {
+                        setTimeout(function(){
 
-                if (r.ok) {
+                            document.querySelector('.userUpdateMsg').innerHTML = '';
+                            window.location.href = '/users';
 
-                    alert(r.msg);
-                    window.location.href = '/users';
+                        }, 3000);
+    
+                    }
+                    else {
+    
+                        alert(r.msg);
+    
+                    }
+    
+                });
 
-                }
-                else {
+            }
 
-                    alert(r.msg);
-
-                }
-
-            });
         }
         else {
 
@@ -67,16 +78,16 @@ document.addEventListener("DOMContentLoaded", function() {
         password.style["border-color"] = "";
         var errs = [];
 
-        if (name.value == "") {
+        if (name.value.trim() == "") {
             errs.push(name);
         }
-        if (email.value == "") {
+        if (email.value.trim() == "") {
             errs.push(email);
         }
-        if (profile.value == 0) {
+        if (profile.value.trim() == 0) {
             errs.push(profile);
         }
-        if (password.value == "") {
+        if (password.value.trim() == "") {
             errs.push(password);
         }
 

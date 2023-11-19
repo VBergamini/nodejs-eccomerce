@@ -40,6 +40,7 @@ class AdminBrandsController {
 
         var ok = true;
         var brand = '';
+        var msg = 'Brand created successfully';
 
         if(req.body.name != '') {
 
@@ -60,9 +61,10 @@ class AdminBrandsController {
         else {
 
             ok = false;
+            msg = 'Error on create brand';
         }
 
-        res.send({ok: ok, msg: 'Brand created'});
+        res.send({ok: ok, msg: msg});
 
     }
 
@@ -70,6 +72,7 @@ class AdminBrandsController {
     async updateBrand(req, res) {
 
         var ok = true;
+        var msg = 'Brand updated successfully'
 
         if(req.body.name != '') {
 
@@ -105,10 +108,11 @@ class AdminBrandsController {
         else {
 
             ok = false;
+            msg = 'Error on update brand';
 
         }
 
-        res.send({ok: ok, msg: 'Brand updated'});
+        res.send({ok: ok, msg: msg});
 
     }
 
@@ -140,7 +144,7 @@ class AdminBrandsController {
                 }
 
                 ok = await brand.deleteBrand(req.body.id);
-                msg = 'Successfully deleted brand'
+                msg = 'Brand deleted successfully'
 
             }
             else {

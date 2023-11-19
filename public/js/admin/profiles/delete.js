@@ -1,65 +1,56 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     var btnDelete = document.querySelectorAll('.btnDelete');
+    btnDelete.forEach(function(value, index) {
 
-    for(let i=0; i < btnDelete.length; i++) {
+        value.onclick = deleteProfile;
 
-        btnDelete[i].addEventListener('click', deleteBrand);
+    })
 
-    }
+    function deleteProfile() {
 
-    function deleteBrand() {
+        var profile = this.dataset.id;
 
-        var id = this.dataset.id;
+        if(profile != null) {
 
-        if(confirm('Are you sure?')) {
+            if(confirm('Are You Sure?')) {
 
-            if(id != '') {
-
-                let data = {id: id};
-
-                fetch('brands/delete', {
+                fetch('/profiles/delete', {
 
                     method: 'DELETE',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(data)
-
+                    body: JSON.stringify({profile: profile})
+    
                 })
                 .then(r => {
-
+    
                     return r.json();
-
+    
                 })
                 .then(r => {
-
+    
                     if(r.ok) {
-
-                        this.parentNode.parentElement.previousElementSibling.innerHTML = `<span class="alert alert-danger">${r.msg}</span>`;
+    
+                        this.parentNode.parentNode.previousElementSibling.innerHTML = `<p class="alert alert-success">${r.msg}</p>`;
                         let that = this;
                         setTimeout(function() {
 
                             that.parentNode.parentNode.parentNode.remove();
 
                         }, 3000);
-
+    
                     }
                     else {
-
+    
                         alert(r.msg);
-
+    
                     }
-
-                })
-                .catch(e => {
-
-                    console.log(e);
-
+    
                 })
 
             }
 
         }
-
     }
 
 })

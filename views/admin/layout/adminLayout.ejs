@@ -30,7 +30,7 @@
     </nav>
     <aside class="main-sidebar sidebar-primary elevation-4" style="background-color: white;">
       <div style="border-bottom:1px solid #cccc;text-align: center;font-size: 18px;margin-top: 18px;">
-        <span class="brand-text"><img src="/img/store/logo/logo.png" width="120"/></span>
+        <a href="/" class="brand-text"><img src="/img/store/logo/logo.png" width="220"/></a>
       </div>
       <div class="sidebar">
         <nav class="mt-2">
@@ -45,6 +45,12 @@
               <a href="/dashboard" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>Dashboard</p>
+              </a>
+            </li>
+            <li class="nav-item menu-open">
+              <a href="/profiles" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>Profiles</p>
               </a>
             </li>
             <li class="nav-item menu-open">
@@ -94,7 +100,7 @@
       </div>
       <section class="content">
         <div class="container-fluid">
-          <div class="card shadow" style="padding: 20px;min-height: 700px;">
+          <div class="card shadow" style="padding: 20px;min-height: 700px;" id="topAnchor">
             <%- body %>
           </div>
         </div>

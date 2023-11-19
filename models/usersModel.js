@@ -4,13 +4,7 @@ const connect = new Database();
 
 class UsersModel {
 
-    #userId;
-    #userName;
-    #userEmail;
-    #userActive;
-    #userPassword;
-    #profileId;
-    #profileDescription;
+    #userId; #userName; #userEmail; #userActive; #userPassword; #profileId; #profileDescription;
 
     get userId() { return this.#userId; } set userId(userId){ this.#userId = userId; }
     get userName() { return this.#userName; } set userName(userName){ this.#userName = userName; }

@@ -11,6 +11,7 @@ const AdminBrandsRoute = require('./routes/admin/adminBrandsRoute');
 const AdminCategoriesRoute = require('./routes/admin/adminCategoriesRoute');
 const StoreRoute = require('./routes/store/storeRoute');
 const AdminOrderRoute = require('./routes/admin/adminOrdersRoute');
+const AdminProfilesRoute = require('./routes/admin/adminProfilesRoute');
 
 const app = express();
 const auth = new Authentication();
@@ -53,6 +54,9 @@ app.use('/dashboard', adminDashboard.router);
 
 var adminUsers = new AdminUsersRoute();
 app.use('/users', adminUsers.router);
+
+var adminProfiles = new AdminProfilesRoute();
+app.use('/profiles', adminProfiles.router);
 
 var adminProducts = new AdminProductsRoute();
 app.use('/products', adminProducts.router);

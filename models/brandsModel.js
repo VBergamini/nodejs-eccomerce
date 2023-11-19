@@ -5,10 +5,7 @@ const connect = new Database();
 
 class BrandsModel {
 
-    #brandId;
-    #brandName;
-    #brandImage;
-    #haveImage;
+    #brandId; #brandName; #brandImage; #haveImage;
 
     get brandId() {return this.#brandId} set brandId(brandId) {this.#brandId = brandId}
     get brandName() {return this.#brandName} set brandName(brandName) {this.#brandName = brandName}

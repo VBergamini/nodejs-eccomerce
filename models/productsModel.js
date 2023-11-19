@@ -3,17 +3,8 @@ const connect = new Database();
 
 class ProductsModel {
 
-    #productId;
-    #productCode;
-    #productName;
-    #productQuantity;
-    #categoryId;
-    #categoryName;
-    #brandId;
-    #brandName;
-    #productPrice;
-    #productImage;
-    #haveImmage;
+    #productId; #productCode; #productName; #productQuantity; #categoryId; #categoryName;
+    #brandId; #brandName; #productPrice; #productImage; #haveImmage;
 
     get productId() { return this.#productId; } set productId(productId) { this.#productId = productId; }
     get productCode() { return this.#productCode; } set productCode(productCode) { this.#productCode = productCode; }

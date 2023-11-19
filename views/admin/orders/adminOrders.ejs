@@ -28,6 +28,7 @@
     <table id="ordersTable" class="table table-striped">
         <thead>
             <th>Order</th>
+            <th>User</th>
             <th>Product</th>
             <th>Quantity</th>
             <th>Price</th>
@@ -37,6 +38,7 @@
             <% list.forEach(function(value, index) { %>
             <tr>
                 <td><%= value.orderId %></td>
+                <td><%= value.userName %></td>
                 <td><%= value.productName %></td>
                 <td><%= value.productItemQuantity %></td>
                 <td>$ <%= parseFloat(value.productItemPrice).toFixed(2) %></td>

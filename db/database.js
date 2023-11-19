@@ -10,10 +10,11 @@ class Database {
     constructor() {
 
         this.#connect = mysql.createPool({
-            host: '132.226.245.178',
-            database: 'PFS1_10442221580',
-            user: '10442221580',
-            password: '10442221580',
+            host: 'localhost',
+            port: '8889',
+            database: 'nodejseccommerce',
+            user: 'neno',
+            password: '',
         });
         
     }

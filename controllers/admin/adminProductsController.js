@@ -55,6 +55,7 @@ class AdminProductsController {
 
         var ok = true;
         var product = '';
+        var msg = 'Product created successfully';
 
         if(req.body.code != '' && req.body.name != '' && req.body.quantity != '' && req.body.quantity != '0' && req.body.brand != '0' && req.body.category != '0' && req.body.price > '0') {
 
@@ -75,10 +76,11 @@ class AdminProductsController {
         else {
 
             ok = false;
+            msg = 'Error on create product';
 
         }
 
-        res.send({ ok: ok, msg: 'Product created' });
+        res.send({ ok: ok, msg: msg });
 
     }
 
@@ -86,6 +88,7 @@ class AdminProductsController {
     async updateProduct(req, res) {
 
         var ok = true;
+        var msg = 'Product updated successfully'
 
         if (req.body.code != '' && req.body.name != '' && req.body.quantity != '' && req.body.quantity  != '0' && req.body.brand != '0' && req.body.category  != '0' && req.body.price > '0') {
 
@@ -120,10 +123,11 @@ class AdminProductsController {
         else {
 
             ok = false;
+            msg = 'Error on update product';
 
         }
 
-        res.send({ ok: ok, msg: 'Product updated' });
+        res.send({ ok: ok, msg: msg });
 
     }
 
@@ -131,6 +135,7 @@ class AdminProductsController {
     async deleteProduct(req, res) {
 
         var ok = true;
+        var msg = 'Product deleted successfully';
         
         if(req.body.id != '') {
 
@@ -155,10 +160,11 @@ class AdminProductsController {
         else {
 
             ok = false;
+            mag = 'Error on delete product';
 
         }
 
-        res.send({ok: ok, msg: 'Product deleted'});
+        res.send({ok: ok, msg: msg});
         
     }
 }

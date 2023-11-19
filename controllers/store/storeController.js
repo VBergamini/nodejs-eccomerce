@@ -213,11 +213,11 @@ class StoreController {
             if(stock == true) {
 
                 let order = new OrderModel();
-                await order.save();
+                await order.save(req.cookies.logedUser);
 
                 for(let i = 0; i < productsList.length; i++) {
 
-                    let orderItem = new OrderItemsModel(0, order.orderId, productsList[i].id, productsList[i].quantity, productsList[i].price);
+                    let orderItem = new OrderItemsModel(0, order.orderId, productsList[i].id, productsList[i].quantity, productsList[i].price, productsList[i].name, req.cookies.logedUser);
                     await orderItem.save();
 
                     product = await product.findProduct(productsList[i].id)
@@ -225,19 +225,19 @@ class StoreController {
 
                 }
         
-                res.send({msg: "Order registered successfully!", ok: true});
+                res.send({ ok: true, msg: "Order registered successfully!" });
 
             }
             else {
         
-                res.send({ ok: false, msg: "Not enough stock for the products: ", outOfStock: outOfStock});
+                res.send({ ok: false, msg: "Not enough stock for the products: ", outOfStock: outOfStock });
 
             }
 
         }
         else {
 
-            res.send({msg: "No products added to cart!", ok: false});
+            res.send({ ok: false, msg: "No products added to cart!" });
 
         }
     }

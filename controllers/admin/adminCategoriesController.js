@@ -40,6 +40,7 @@ class AdminCategoriesController {
 
         var ok = true;
         var category = '';
+        var msg = 'Category created successfully';
 
         if(req.body.name != '') {
 
@@ -60,16 +61,18 @@ class AdminCategoriesController {
         else {
 
             ok = false;
+            msg = 'Error on create category';
 
         }
 
-        res.send({ok: ok, msg: 'Category created'});
+        res.send({ok: ok, msg: msg});
     }
 
     // put
     async updateCategory(req, res) {
 
         var ok = true;
+        var msg = 'Category updated successfully';
         
         if(req.body.name != '') {
 
@@ -105,9 +108,10 @@ class AdminCategoriesController {
         else {
 
             ok = false;
+            msg = 'Error on update category';
         }
 
-        res.send({ok: ok, msg: 'Category updated'});
+        res.send({ok: ok, msg: msg});
         
     }
 
@@ -115,7 +119,7 @@ class AdminCategoriesController {
     async deleteCategory(req, res) {
 
         var ok = true;
-        var msg = '';
+        var msg = 'Category deleted successfully';
 
         if(req.body.id != '') {
 
@@ -139,7 +143,6 @@ class AdminCategoriesController {
                 }
 
                 ok = await category.deleteCategory(req.body.id);
-                msg = 'Successfully deleted category'
             
             }
             else {
@@ -157,7 +160,7 @@ class AdminCategoriesController {
 
         }
 
-        res.send({ok: ok, msg:msg});
+        res.send({ok: ok, msg: msg});
 
     }
     
