@@ -13,7 +13,7 @@ class Database {
             host: 'localhost',
             port: '8889',
             database: 'nodejseccommerce',
-            user: 'neno',
+            user: 'user',
             password: '',
         });
         
